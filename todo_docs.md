@@ -35,10 +35,10 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Files exist for AE, DM, EX, VS, CM, DS and MH domains.
   - Each includes entity tables with PK/FK attributes and a PlantUML ER diagram block.
 
-- [ ] **API Contract & Versioning Policy**
+- [x] **API Contract & Versioning Policy**
   - Path: `docs/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-{service}.md`
-  - Create OpenAPI 3.1 stubs for services: `fastapi-gateway`, `cli-wrapper`, `nlp-extraction`, `mapping-generation`, `validation`.
-  - Each contract should define one CRUD path, an ErrorObject schema and `x-versioning-policy` describing semantic versioning/deprecation timelines (with Markdown diagram).
+  - OpenAPI 3.1 stubs exist for services: `fastapi-gateway`, `cli-wrapper`, `nlp-extraction`, `mapping-generation`, `validation`.
+  - Each defines one CRUD path, an ErrorObject schema and `x-versioning-policy` with a Mermaid timeline.
 
 - [ ] **Roadmap / Milestone Plan**
   - Path: `docs/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md`
