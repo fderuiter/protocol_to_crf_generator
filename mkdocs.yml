@@ -1,0 +1,14 @@
+site_name: Protocol to CRF Generator
+site_description: Documentation for the Protocol to CRF Generator project.
+site_author: Your Org
+repo_url: https://github.com/your-org/protocol-to-crf-generator
+docs_dir: docs
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+markdown_extensions:
+  - toc
+  - admonition
+  - codehilite
