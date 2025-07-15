@@ -30,10 +30,10 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Follow MADR 2.0 format. Document decision context, considered options, decision outcome and consequences.
   - PlantUML diagram should show services: CLI Tool, FastAPI Gateway, NLP & Extraction svc, Mapping/Generation svc, Validation svc, SPA Web UI, Terminology DB, Audit Log DB, CI/CD pipeline, and integrations with CDISC repos and EDC/CTMS.
 
-- [ ] **Data Model / ER Diagram**
-  - Path: `docs/3_Architecture & Design/2_Data Model+ERD/er-model-{domain}.md`
-  - Create one file per clinical domain: AE, DM, EX, VS, CM, DS, MH.
-  - Include entity tables with PK/FK attributes and a PlantUML ER diagram block.
+- [x] **Data Model / ER Diagram**
+  - Path: `docs/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-{domain}.md`
+  - Files exist for AE, DM, EX, VS, CM, DS and MH domains.
+  - Each includes entity tables with PK/FK attributes and a PlantUML ER diagram block.
 
 - [ ] **API Contract & Versioning Policy**
   - Path: `docs/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-{service}.md`
