@@ -13,7 +13,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Add "Escalation Paths" paragraph on conflict resolution.
   - Update list whenever new stakeholders are identified.
 
-- [ ] **Functional Specification / User-Story Backlog**
+- [x] **Functional Specification / User-Story Backlog**
   - Path: `docs/2_Requirements/1_Functional Spec or User-Story Backlog/functional-spec-{feature}.md`
   - Draft one spec per feature area (start with `functional_spec_protocol_ingestion.md`).
   - Epics: Document Ingestion, Table & Section Detection, NLP Entity Extraction, Canonical IR Persistence, Operational Logging & Error Handling.
