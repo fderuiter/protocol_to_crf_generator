@@ -88,6 +88,3 @@ This file tracks documentation tasks for the project. Each entry lists the docum
 - [ ] **Security & Privacy Threat Model**
   - Path: `docs/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md`
   - Follow STRIDE methodology: system overview, data-flow description, threat enumeration table, mitigation summary and residual risk rating.
-
-
-All documents are drafted, reviewed and approved by the solo developer.
