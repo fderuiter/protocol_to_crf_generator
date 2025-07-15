@@ -44,7 +44,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md`
   - Build a table showing epics across the next four quarters with ✅/⚪ indicators and a narrative explaining dependencies.
 
-- [ ] **Risk Register & Mitigation Plan**
+- [x] **Risk Register & Mitigation Plan**
   - Path: `docs/4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md`
   - List project risks with Impact, Probability, Exposure (auto-computed) and emoji-coded severity. Include mitigation actions and owner.
   - Summarize counts per risk level in a heat-map section.
