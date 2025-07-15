@@ -25,43 +25,43 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Cover categories: Performance, Scalability, Availability, Security, Compliance, Accessibility, Observability, Internationalization, Maintainability.
   - Provide measurable targets and note how verification will occur.
 
-- [ ] **High-Level Architecture ADR**
+- [x] **High-Level Architecture ADR**
   - Path: `docs/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md`
   - Follow MADR 2.0 format. Document decision context, considered options, decision outcome and consequences.
   - PlantUML diagram should show services: CLI Tool, FastAPI Gateway, NLP & Extraction svc, Mapping/Generation svc, Validation svc, SPA Web UI, Terminology DB, Audit Log DB, CI/CD pipeline, and integrations with CDISC repos and EDC/CTMS.
 
-- [ ] **Data Model / ER Diagram**
-  - Path: `docs/3_Architecture & Design/2_Data Model+ERD/er-model-{domain}.md`
-  - Create one file per clinical domain: AE, DM, EX, VS, CM, DS, MH.
-  - Include entity tables with PK/FK attributes and a PlantUML ER diagram block.
+- [x] **Data Model / ER Diagram**
+  - Path: `docs/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-{domain}.md`
+  - Files exist for AE, DM, EX, VS, CM, DS and MH domains.
+  - Each includes entity tables with PK/FK attributes and a PlantUML ER diagram block.
 
-- [ ] **API Contract & Versioning Policy**
+- [x] **API Contract & Versioning Policy**
   - Path: `docs/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-{service}.md`
-  - Create OpenAPI 3.1 stubs for services: `fastapi-gateway`, `cli-wrapper`, `nlp-extraction`, `mapping-generation`, `validation`.
-  - Each contract should define one CRUD path, an ErrorObject schema and `x-versioning-policy` describing semantic versioning/deprecation timelines (with Markdown diagram).
+  - OpenAPI 3.1 stubs exist for services: `fastapi-gateway`, `cli-wrapper`, `nlp-extraction`, `mapping-generation`, `validation`.
+  - Each defines one CRUD path, an ErrorObject schema and `x-versioning-policy` with a Mermaid timeline.
 
-- [ ] **Roadmap / Milestone Plan**
+- [x] **Roadmap / Milestone Plan**
   - Path: `docs/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md`
   - Build a table showing epics across the next four quarters with ✅/⚪ indicators and a narrative explaining dependencies.
 
-- [ ] **Risk Register & Mitigation Plan**
+- [x] **Risk Register & Mitigation Plan**
   - Path: `docs/4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md`
   - List project risks with Impact, Probability, Exposure (auto-computed) and emoji-coded severity. Include mitigation actions and owner.
   - Summarize counts per risk level in a heat-map section.
 
-- [ ] **Test Strategy & Definition of Done**
+- [x] **Test Strategy & Definition of Done**
   - Path: `docs/5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md`
   - Cover objectives & scope, test pyramid targets, tooling/environments, non-functional tests, defect severity definitions and a DoD checklist.
 
-- [ ] **Coding Standards & Style Guide**
+- [x] **Coding Standards & Style Guide**
   - Path: `docs/5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md`
   - Focus on Python. Document formatting rules, naming, error handling, docstrings, module layout, snippet examples and pre-commit configuration.
 
-- [ ] **CI/CD Pipeline Blueprint**
+- [x] **CI/CD Pipeline Blueprint**
   - Path: `docs/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md`
   - Describe trigger flow, build steps, test stages, security/license scans, artifact handling, deployment strategy, rollback hooks and notifications. Include a Mermaid flowchart.
 
-- [ ] **Deployment & Rollback Runbook**
+  - [x] **Deployment & Rollback Runbook**
   - Path: `docs/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md`
   - Detail preconditions, numbered deploy steps, health checks, rollback procedure and contact matrix.
 
