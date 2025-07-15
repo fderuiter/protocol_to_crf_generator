@@ -40,7 +40,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - OpenAPI 3.1 stubs exist for services: `fastapi-gateway`, `cli-wrapper`, `nlp-extraction`, `mapping-generation`, `validation`.
   - Each defines one CRUD path, an ErrorObject schema and `x-versioning-policy` with a Mermaid timeline.
 
-- [ ] **Roadmap / Milestone Plan**
+- [x] **Roadmap / Milestone Plan**
   - Path: `docs/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md`
   - Build a table showing epics across the next four quarters with ✅/⚪ indicators and a narrative explaining dependencies.
 
