@@ -7,7 +7,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Include sections: Purpose & Vision, SMART business objectives table, Scope (in/out), Deliverables/Milestones timeline, Success KPIs, Assumptions & Constraints, RACI table, Budget snapshot, Approval & Revision history.
   - Verify document stays under two rendered pages.
 
-- [ ] **Stakeholder Register & RACI List**
+- [x] **Stakeholder Register & RACI List**
   - Path: `docs/1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md`
   - Table columns: Role, Name, Responsibility, RACI, Preferred Channel, Frequency of Updates.
   - Add "Escalation Paths" paragraph on conflict resolution.
