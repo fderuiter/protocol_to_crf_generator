@@ -49,7 +49,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - List project risks with Impact, Probability, Exposure (auto-computed) and emoji-coded severity. Include mitigation actions and owner.
   - Summarize counts per risk level in a heat-map section.
 
-- [ ] **Test Strategy & Definition of Done**
+- [x] **Test Strategy & Definition of Done**
   - Path: `docs/5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md`
   - Cover objectives & scope, test pyramid targets, tooling/environments, non-functional tests, defect severity definitions and a DoD checklist.
 
