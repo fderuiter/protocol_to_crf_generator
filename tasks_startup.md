@@ -38,9 +38,9 @@ This document lists the tasks required to set up the repository and project on G
 - [x] **Automate controlled terminology updates**
   - [x] Implement a scheduled GitHub Action that checks NCI-EVS weekly, generates `terminology.sqlite`, opens a PR, and requires manual review before merging.
 
-- [ ] **Include deployment instructions**
-  - [ ] Document Docker-based deployment and rollback steps in the repository runbook.
-  - [ ] Publish static documentation with MkDocs using the Material theme.
+- [x] **Include deployment instructions**
+  - [x] Document Docker-based deployment and rollback steps in the repository runbook.
+  - [x] Publish static documentation with MkDocs using the Material theme.
 
 - [ ] **Use GitHub issues and PRs as the canonical communication channel**
   - [ ] Track tasks and decisions in issues and keep discussions in PRs for auditability.
