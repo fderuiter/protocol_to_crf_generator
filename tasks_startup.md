@@ -22,13 +22,13 @@ This document lists the tasks required to set up the repository and project on G
   - [x] `.pre-commit-config.yaml` should run `ruff` and `mypy --strict`.
   - [x] Execute `pre-commit run --all-files` and `pytest` before pushing changes.
 
-- [ ] **Set up automated testing and quality gates**
-  - [ ] Configure GitHub Actions to run sequential jobs: lint-and-format (`ruff` + `mypy --strict`), unit-test (`pytest` with coverage ≥90%), security-scan (Bandit & Semgrep), schema-validate artefacts, package, and deploy on tagged releases.
-  - [ ] Trigger workflows on pushes/PRs to `main` and schedule a weekly job for controlled terminology updates.
+- [x] **Set up automated testing and quality gates**
+  - [x] Configure GitHub Actions to run sequential jobs: lint-and-format (`ruff` + `mypy --strict`), unit-test (`pytest` with coverage ≥90%), security-scan (Bandit & Semgrep), schema-validate artefacts, package, and deploy on tagged releases.
+  - [x] Trigger workflows on pushes/PRs to `main` and schedule a weekly job for controlled terminology updates.
 
-- [ ] **Maintain testing standards**
-  - [ ] Run `pytest -n auto --cov` locally; tests and pre-commit must succeed before pushing.
-  - [ ] Satisfy the Definition of Done checklist: passing tests with coverage ≥90%, no critical lint/security issues, docs updated, CI success, and peer review.
+- [x] **Maintain testing standards**
+  - [x] Run `pytest -n auto --cov` locally; tests and pre-commit must succeed before pushing.
+  - [x] Satisfy the Definition of Done checklist: passing tests with coverage ≥90%, no critical lint/security issues, docs updated, CI success, and peer review.
 
 - [ ] **Provide governance and compliance documentation**
   - [ ] Maintain a third-party software inventory under `docs/7_Governance & Compliance`.
