@@ -57,7 +57,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md`
   - Focus on Python. Document formatting rules, naming, error handling, docstrings, module layout, snippet examples and pre-commit configuration.
 
-- [ ] **CI/CD Pipeline Blueprint**
+- [x] **CI/CD Pipeline Blueprint**
   - Path: `docs/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md`
   - Describe trigger flow, build steps, test stages, security/license scans, artifact handling, deployment strategy, rollback hooks and notifications. Include a Mermaid flowchart.
 
