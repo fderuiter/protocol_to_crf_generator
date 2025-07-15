@@ -20,7 +20,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - For each story include "As a..." wording plus Gherkin acceptance criteria. Link to NFR checklist where applicable.
   - Capture open questions and external dependencies.
 
-- [ ] **Non-Functional Requirements (NFR) Sheet**
+- [x] **Non-Functional Requirements (NFR) Sheet**
   - Path: `docs/2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr-checklist.md`
   - Cover categories: Performance, Scalability, Availability, Security, Compliance, Accessibility, Observability, Internationalization, Maintainability.
   - Provide measurable targets and note how verification will occur.
