@@ -30,10 +30,10 @@ This document lists the tasks required to set up the repository and project on G
   - [x] Run `pytest -n auto --cov` locally; tests and pre-commit must succeed before pushing.
   - [x] Satisfy the Definition of Done checklist: passing tests with coverage ≥90%, no critical lint/security issues, docs updated, CI success, and peer review.
 
-- [ ] **Provide governance and compliance documentation**
-  - [ ] Maintain a third-party software inventory under `docs/7_Governance & Compliance`.
-  - [ ] Add a “Standard Version Adoption and Management Policy” in `GOVERNANCE.md`.
-  - [ ] Document the security & privacy threat model in the repository.
+- [x] **Provide governance and compliance documentation**
+  - [x] Maintain a third-party software inventory under `docs/7_Governance & Compliance`.
+  - [x] Add a “Standard Version Adoption and Management Policy” in `GOVERNANCE.md`.
+  - [x] Document the security & privacy threat model in the repository.
 
 - [ ] **Automate controlled terminology updates**
   - [ ] Implement a scheduled GitHub Action that checks NCI-EVS weekly, generates `terminology.sqlite`, opens a PR, and requires manual review before merging.
