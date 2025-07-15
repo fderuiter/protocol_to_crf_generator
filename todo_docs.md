@@ -73,7 +73,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/6_Dev Env & Collaboration/2_Branching + Version Control Strategy/git-strategy.md`
   - Describe branch types, naming conventions, PR rules, release tagging, hotfix flow with Mermaid diagram and Conventional Commit table.
 
-- [ ] **Contribution Guidelines & Code-Review Checklist**
+- [x] **Contribution Guidelines & Code-Review Checklist**
   - Path: `docs/6_Dev Env & Collaboration/3_Contribution Guidelines & Code-Review Checklist/CONTRIBUTING.md`
   - Explain how to file issues, branch naming pattern, include PR template, 10-question code review checklist and link to Code of Conduct.
 
