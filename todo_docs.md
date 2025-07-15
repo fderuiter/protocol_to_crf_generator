@@ -77,7 +77,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/6_Dev Env & Collaboration/3_Contribution Guidelines & Code-Review Checklist/CONTRIBUTING.md`
   - Explain how to file issues, branch naming pattern, include PR template, 10-question code review checklist and link to Code of Conduct.
 
-- [ ] **Communication & Meeting Cadence Plan**
+- [x] **Communication & Meeting Cadence Plan**
   - Path: `docs/6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md`
   - Provide a ceremonies table (frequency, duration, participants, tool). Add guidelines for async updates and reference decision logging via ADRs.
 
