@@ -65,26 +65,26 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md`
   - Detail preconditions, numbered deploy steps, health checks, rollback procedure and contact matrix.
 
-- [ ] **Repository README & Quick-Start**
+- [x] **Repository README & Quick-Start**
   - Path: `docs/6_Dev Env & Collaboration/1_Repository README & Quick-Start Guide/README.md`
   - Expand root `README.md` with badges, prerequisites, three-step setup, common commands, test instructions, how to contribute and license reference.
 
-- [ ] **Branching / Version Control Strategy**
+- [x] **Branching / Version Control Strategy**
   - Path: `docs/6_Dev Env & Collaboration/2_Branching + Version Control Strategy/git-strategy.md`
   - Describe branch types, naming conventions, PR rules, release tagging, hotfix flow with Mermaid diagram and Conventional Commit table.
 
-- [ ] **Contribution Guidelines & Code-Review Checklist**
+- [x] **Contribution Guidelines & Code-Review Checklist**
   - Path: `docs/6_Dev Env & Collaboration/3_Contribution Guidelines & Code-Review Checklist/CONTRIBUTING.md`
   - Explain how to file issues, branch naming pattern, include PR template, 10-question code review checklist and link to Code of Conduct.
 
-- [ ] **Communication & Meeting Cadence Plan**
+- [x] **Communication & Meeting Cadence Plan**
   - Path: `docs/6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md`
   - Provide a ceremonies table (frequency, duration, participants, tool). Add guidelines for async updates and reference decision logging via ADRs.
 
-- [ ] **License & Third-Party Software Inventory**
+- [x] **License & Third-Party Software Inventory**
   - Path: `docs/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md`
   - Create inventory table (package, version, license, URL, usage, notes) and add paragraph on SPDX and compliance obligations.
 
-- [ ] **Security & Privacy Threat Model**
+- [x] **Security & Privacy Threat Model**
   - Path: `docs/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md`
   - Follow STRIDE methodology: system overview, data-flow description, threat enumeration table, mitigation summary and residual risk rating.
