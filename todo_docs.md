@@ -53,7 +53,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md`
   - Cover objectives & scope, test pyramid targets, tooling/environments, non-functional tests, defect severity definitions and a DoD checklist.
 
-- [ ] **Coding Standards & Style Guide**
+- [x] **Coding Standards & Style Guide**
   - Path: `docs/5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md`
   - Focus on Python. Document formatting rules, naming, error handling, docstrings, module layout, snippet examples and pre-commit configuration.
 
