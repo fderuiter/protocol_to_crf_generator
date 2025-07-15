@@ -65,7 +65,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md`
   - Detail preconditions, numbered deploy steps, health checks, rollback procedure and contact matrix.
 
-- [ ] **Repository README & Quick-Start**
+- [x] **Repository README & Quick-Start**
   - Path: `docs/6_Dev Env & Collaboration/1_Repository README & Quick-Start Guide/README.md`
   - Expand root `README.md` with badges, prerequisites, three-step setup, common commands, test instructions, how to contribute and license reference.
 
