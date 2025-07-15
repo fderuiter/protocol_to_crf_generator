@@ -81,10 +81,10 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md`
   - Provide a ceremonies table (frequency, duration, participants, tool). Add guidelines for async updates and reference decision logging via ADRs.
 
-- [ ] **License & Third-Party Software Inventory**
+- [x] **License & Third-Party Software Inventory**
   - Path: `docs/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md`
   - Create inventory table (package, version, license, URL, usage, notes) and add paragraph on SPDX and compliance obligations.
 
-- [ ] **Security & Privacy Threat Model**
+- [x] **Security & Privacy Threat Model**
   - Path: `docs/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md`
   - Follow STRIDE methodology: system overview, data-flow description, threat enumeration table, mitigation summary and residual risk rating.
