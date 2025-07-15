@@ -25,7 +25,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Cover categories: Performance, Scalability, Availability, Security, Compliance, Accessibility, Observability, Internationalization, Maintainability.
   - Provide measurable targets and note how verification will occur.
 
-- [ ] **High-Level Architecture ADR**
+- [x] **High-Level Architecture ADR**
   - Path: `docs/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md`
   - Follow MADR 2.0 format. Document decision context, considered options, decision outcome and consequences.
   - PlantUML diagram should show services: CLI Tool, FastAPI Gateway, NLP & Extraction svc, Mapping/Generation svc, Validation svc, SPA Web UI, Terminology DB, Audit Log DB, CI/CD pipeline, and integrations with CDISC repos and EDC/CTMS.
