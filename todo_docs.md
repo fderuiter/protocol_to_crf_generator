@@ -69,7 +69,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/6_Dev Env & Collaboration/1_Repository README & Quick-Start Guide/README.md`
   - Expand root `README.md` with badges, prerequisites, three-step setup, common commands, test instructions, how to contribute and license reference.
 
-- [ ] **Branching / Version Control Strategy**
+- [x] **Branching / Version Control Strategy**
   - Path: `docs/6_Dev Env & Collaboration/2_Branching + Version Control Strategy/git-strategy.md`
   - Describe branch types, naming conventions, PR rules, release tagging, hotfix flow with Mermaid diagram and Conventional Commit table.
 
