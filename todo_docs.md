@@ -2,25 +2,25 @@
 
 This file tracks documentation tasks for the project. Each entry lists the document, location under `docs/`, and key items that must be covered. Because this is a solo project you are responsible for drafting, review and approval.
 
-- [ ] **Project Charter / Vision Statement**
+- [x] **Project Charter / Vision Statement**
   - Path: `docs/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md`
   - Include sections: Purpose & Vision, SMART business objectives table, Scope (in/out), Deliverables/Milestones timeline, Success KPIs, Assumptions & Constraints, RACI table, Budget snapshot, Approval & Revision history.
   - Verify document stays under two rendered pages.
 
-- [ ] **Stakeholder Register & RACI List**
+- [x] **Stakeholder Register & RACI List**
   - Path: `docs/1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md`
   - Table columns: Role, Name, Responsibility, RACI, Preferred Channel, Frequency of Updates.
   - Add "Escalation Paths" paragraph on conflict resolution.
   - Update list whenever new stakeholders are identified.
 
-- [ ] **Functional Specification / User-Story Backlog**
+- [x] **Functional Specification / User-Story Backlog**
   - Path: `docs/2_Requirements/1_Functional Spec or User-Story Backlog/functional-spec-{feature}.md`
   - Draft one spec per feature area (start with `functional_spec_protocol_ingestion.md`).
   - Epics: Document Ingestion, Table & Section Detection, NLP Entity Extraction, Canonical IR Persistence, Operational Logging & Error Handling.
   - For each story include "As a..." wording plus Gherkin acceptance criteria. Link to NFR checklist where applicable.
   - Capture open questions and external dependencies.
 
-- [ ] **Non-Functional Requirements (NFR) Sheet**
+- [x] **Non-Functional Requirements (NFR) Sheet**
   - Path: `docs/2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr-checklist.md`
   - Cover categories: Performance, Scalability, Availability, Security, Compliance, Accessibility, Observability, Internationalization, Maintainability.
   - Provide measurable targets and note how verification will occur.

@@ -1,5 +1,8 @@
 # Functional Specification – Protocol Ingestion & Information Extraction
 
+This specification expands on requirements in the
+[**CDISC CRF Generation Technical Plan**](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+
 > **Context & Goals**  
 > The Protocol Ingestion & Information Extraction (PIIE) feature automates the conversion of heterogeneous study‑protocol documents (DOCX, PDF, XML) into a validated **Study Requirements JSON** that downstream components (mapping, CRF generation, validation) consume.  
 > Success is measured by (a) ≥90 % extraction recall for targeted sections (Schedule of Assessments, Eligibility Criteria, etc.), (b) <5 % manual curation rate after first‑pass NLP, and (c) completion within 2 min for a 100‑page protocol.
