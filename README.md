@@ -49,6 +49,15 @@ Tests should pass and coverage remain ≥90% as specified in the [test strategy]
 
 Please read the [CONTRIBUTING guide](docs/6_Dev%20Env%20&%20Collaboration/3_Contribution%20Guidelines%20&%20Code-Review%20Checklist/CONTRIBUTING.md) before submitting issues or pull requests.
 
+## Branching & Commit Rules
+
+This project follows a clear Git strategy:
+
+- Use branch names like `feat/<desc>`, `docs/<topic>`, `release/vX.Y.Z`, `hotfix/vX.Y.Z` and `chore/ct-update-<date>`.
+- Commits adhere to the [Conventional Commits](https://www.conventionalcommits.org) style.
+- Pull requests must target `main` and are squash merged after approval and passing checks.
+- Releases are tagged using `vMAJOR.MINOR.PATCH` to trigger the deployment pipeline.
+
 ## License
 
 This project is distributed under the [Apache 2.0](LICENSE) license.

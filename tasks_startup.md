@@ -12,10 +12,10 @@ This document lists the tasks required to set up the repository and project on G
   - [x] Include a Contributor Covenant `CODE_OF_CONDUCT.md`.
   - [x] Enable a CLA workflow so external contributors sign before merging PRs.
 
-- [ ] **Establish branching and commit rules**
-  - [ ] Use the documented branch types (`main`, `feat/<desc>`, `docs/<topic>`, `release/vX.Y.Z`, `hotfix/vX.Y.Z`, `chore/ct-update-<date>`).
-  - [ ] Follow Conventional Commits. Pull requests target `main` and are squash-merged after approval and passing checks.
-  - [ ] Tag releases with `vMAJOR.MINOR.PATCH` to trigger package and image publishing.
+- [x] **Establish branching and commit rules**
+  - [x] Use the documented branch types (`main`, `feat/<desc>`, `docs/<topic>`, `release/vX.Y.Z`, `hotfix/vX.Y.Z`, `chore/ct-update-<date>`).
+  - [x] Follow Conventional Commits. Pull requests target `main` and are squash-merged after approval and passing checks.
+  - [x] Tag releases with `vMAJOR.MINOR.PATCH` to trigger package and image publishing.
 
 - [ ] **Configure pre-commit and code style**
   - [ ] Install `pre-commit` and run `pre-commit install` after cloning.
