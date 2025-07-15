@@ -61,7 +61,7 @@ This file tracks documentation tasks for the project. Each entry lists the docum
   - Path: `docs/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md`
   - Describe trigger flow, build steps, test stages, security/license scans, artifact handling, deployment strategy, rollback hooks and notifications. Include a Mermaid flowchart.
 
-- [ ] **Deployment & Rollback Runbook**
+  - [x] **Deployment & Rollback Runbook**
   - Path: `docs/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md`
   - Detail preconditions, numbered deploy steps, health checks, rollback procedure and contact matrix.
 
