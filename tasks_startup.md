@@ -5,6 +5,7 @@ This document lists the tasks required to set up the repository and project on G
 - [ ] **Create the repository with basic files**
   - [ ] Add a README with prerequisites and a quick 3-step setup including `pre-commit` installation.
   - [ ] Include an Apache 2.0 LICENSE file in the root.
+  - [ ] Maintain a third-party inventory for dependency licenses.
 
 - [ ] **Prepare contributor and community files**
   - [ ] Add `CONTRIBUTING.md` describing the workflow for forking, branch naming, and the PR template.
@@ -14,13 +15,15 @@ This document lists the tasks required to set up the repository and project on G
 - [ ] **Establish branching and commit rules**
   - [ ] Use the documented branch types (`main`, `feat/<desc>`, `docs/<topic>`, `release/vX.Y.Z`, `hotfix/vX.Y.Z`, `chore/ct-update-<date>`).
   - [ ] Follow Conventional Commits. Pull requests target `main` and are squash-merged after approval and passing checks.
+  - [ ] Tag releases with `vMAJOR.MINOR.PATCH` to trigger package and image publishing.
 
 - [ ] **Configure pre-commit and code style**
   - [ ] Install `pre-commit` and run `pre-commit install` after cloning.
-  - [ ] `.pre-commit-config.yaml` should run `ruff` and `mypy` in strict mode.
+  - [ ] `.pre-commit-config.yaml` should run `ruff` and `mypy --strict`.
+  - [ ] Execute `pre-commit run --all-files` and `pytest` before pushing changes.
 
 - [ ] **Set up automated testing and quality gates**
-  - [ ] Configure GitHub Actions to run lint/type checks (`ruff`, `mypy`), unit tests with coverage ≥90%, security scans (Bandit & Semgrep), schema validation, packaging, and optional deploy on tags.
+  - [ ] Configure GitHub Actions to run sequential jobs: lint-and-format (`ruff` + `mypy --strict`), unit-test (`pytest` with coverage ≥90%), security-scan (Bandit & Semgrep), schema-validate artefacts, package, and deploy on tagged releases.
   - [ ] Trigger workflows on pushes/PRs to `main` and schedule a weekly job for controlled terminology updates.
 
 - [ ] **Maintain testing standards**
@@ -37,9 +40,11 @@ This document lists the tasks required to set up the repository and project on G
 
 - [ ] **Include deployment instructions**
   - [ ] Document Docker-based deployment and rollback steps in the repository runbook.
+  - [ ] Publish static documentation with MkDocs using the Material theme.
 
 - [ ] **Use GitHub issues and PRs as the canonical communication channel**
   - [ ] Track tasks and decisions in issues and keep discussions in PRs for auditability.
+  - [ ] Use GitHub Projects for backlog grooming and link meeting notes to issues or PRs.
 
 - [ ] **Plan future work**
   - [ ] After completing the above tasks, create a new robust, comprehensive, and precise task list outlining the next steps for the project.
