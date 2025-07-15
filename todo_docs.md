@@ -2,7 +2,7 @@
 
 This file tracks documentation tasks for the project. Each entry lists the document, location under `docs/`, and key items that must be covered. Because this is a solo project you are responsible for drafting, review and approval.
 
-- [ ] **Project Charter / Vision Statement**
+- [x] **Project Charter / Vision Statement**
   - Path: `docs/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md`
   - Include sections: Purpose & Vision, SMART business objectives table, Scope (in/out), Deliverables/Milestones timeline, Success KPIs, Assumptions & Constraints, RACI table, Budget snapshot, Approval & Revision history.
   - Verify document stays under two rendered pages.
