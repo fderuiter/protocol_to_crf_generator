@@ -1,4 +1,4 @@
-# Non‑Functional Requirements Checklist – CRF Generator (Comprehensive)
+# Non‑Functional Requirements Checklist – CRF Generator
 
 This expanded checklist derives directly from the **CDISC CRF Generation Technical Plan** and elaborates each non‑functional requirement (NFR) with concrete, testable targets that align with 21 CFR Part 11, CDISC best‑practice guidance, and modern DevOps principles.
 

@@ -5,7 +5,9 @@
 > Success is measured by (a) ≥90 % extraction recall for targeted sections (Schedule of Assessments, Eligibility Criteria, etc.), (b) <5 % manual curation rate after first‑pass NLP, and (c) completion within 2 min for a 100‑page protocol.
 
 ---
+
 ## 📑 Table of Contents
+
 1. [Glossary](#glossary)
 2. [User Stories (by Epic)](#user-stories)  
    &nbsp;&nbsp;2.1 [Document Ingestion](#epic-ingest)  
@@ -17,7 +19,9 @@
 4. [Open Questions & Dependencies](#open-questions)
 
 ---
+
 ## Glossary<a name="glossary"></a>
+
 | Term | Definition |
 |------|------------|
 | **Importer** | Format‑specific module that reads a protocol (DOCX, PDF, XML) and emits raw text + tables. |
@@ -29,8 +33,11 @@
 | **Extraction Recall** | % of target requirements correctly identified by NLP pipeline. |
 
 ---
+
 ## User Stories<a name="user-stories"></a>
+
 ### Epic PI‑01 – Document Ingestion<a name="epic-ingest"></a>
+
 | ID | User Story | Acceptance Criteria |
 |----|-----------|---------------------|
 | PI‑01‑01 | As a **Data Manager** I want to upload a *DOCX* protocol so that the system begins extraction automatically. | **Given** a valid DOCX file ≤ 50 MB  
@@ -41,6 +48,7 @@
 **Then** the service responds 400 *“Unsupported format”*. |
 
 ### Epic PI‑02 – Table & Section Detection<a name="epic-structure"></a>
+
 | ID | User Story | Acceptance Criteria |
 |----|-----------|---------------------|
 | PI‑02‑01 | As an **NLP Engineer** I want section headers classified so that downstream extractors focus only on relevant portions. | **Given** a parsed protocol  
@@ -51,6 +59,7 @@
 **Then** the table is emitted as normalized CSV with header hierarchy flattened. |
 
 ### Epic PI‑03 – NLP Entity Extraction<a name="epic-nlp"></a>
+
 | ID | User Story | Acceptance Criteria |
 |----|-----------|---------------------|
 | PI‑03‑01 | As a **Data Scientist** I want visits, assessments, and timing entities recognised so that they map to CDASH later. | **Given** a sentence “Vital signs will be recorded at Screening and Week 4”  
@@ -61,6 +70,7 @@
 **Then** provenance includes page num, table ID, row/col indices. |
 
 ### Epic PI‑04 – Canonical IR Persistence<a name="epic-ir"></a>
+
 | ID | User Story | Acceptance Criteria |
 |----|-----------|---------------------|
 | PI‑04‑01 | As a **Backend Developer** I want validated JSON persisted so that later stages consume consistent schemas. | **Given** extracted entities  
@@ -71,6 +81,7 @@
 **Then** a manifest file lists filename + SHA‑256 hash + timestamp. |
 
 ### Epic PI‑05 – Operational Logging & Error Handling<a name="epic-ops"></a>
+
 | ID | User Story | Acceptance Criteria |
 |----|-----------|---------------------|
 | PI‑05‑01 | As a **Site Reliability Engineer** I want structured logs for each ingestion step so that incidents can be triaged quickly. | **Given** ingestion of protocol XYZ  
@@ -81,7 +92,9 @@
 **Then** the job summary includes counts for entities found, confidence distribution, and extraction recall estimate. |
 
 ---
+
 ## Non‑Functional Notes<a name="nfr"></a>
+
 * **Performance:** Process ≤100‑page DOCX in <2 min (P90).  
 * **Scalability:** Async pipeline must allow ≥10 concurrent ingestions (*see NFR‑PERF‑02*).  
 * **Compliance:** Audit trail + hash manifest per 21 CFR 11 (*see NFR‑COMP‑01*).  
@@ -89,7 +102,9 @@
 * **Standards:** Canonical IR schema versioned; backward compatibility guaranteed for MINOR releases.
 
 ---
+
 ## Open Questions & Dependencies<a name="open-questions"></a>
+
 1. **PDF Table Accuracy** – Do we set minimum recall thresholds or flag PDF imports as *best‑effort* only?
 2. **Statistical vs Rule‑based NER** – MVP uses rules; what criteria trigger upgrade to ML model?
 3. **Storage Layer** – IR JSON persisted in Postgres JSONB vs object storage? Decision affects query‑ability.
@@ -98,4 +113,3 @@
 
 ---
 *[Return to Top](#functional-spec-protocol-ingestion)
-
