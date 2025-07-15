@@ -35,8 +35,8 @@ This document lists the tasks required to set up the repository and project on G
   - [x] Add a “Standard Version Adoption and Management Policy” in `GOVERNANCE.md`.
   - [x] Document the security & privacy threat model in the repository.
 
-- [ ] **Automate controlled terminology updates**
-  - [ ] Implement a scheduled GitHub Action that checks NCI-EVS weekly, generates `terminology.sqlite`, opens a PR, and requires manual review before merging.
+- [x] **Automate controlled terminology updates**
+  - [x] Implement a scheduled GitHub Action that checks NCI-EVS weekly, generates `terminology.sqlite`, opens a PR, and requires manual review before merging.
 
 - [ ] **Include deployment instructions**
   - [ ] Document Docker-based deployment and rollback steps in the repository runbook.
