@@ -2,15 +2,15 @@
 
 This document lists the tasks required to set up the repository and project on GitHub as described in the documentation.
 
-- [ ] **Create the repository with basic files**
-  - [ ] Add a README with prerequisites and a quick 3-step setup including `pre-commit` installation.
-  - [ ] Include an Apache 2.0 LICENSE file in the root.
-  - [ ] Maintain a third-party inventory for dependency licenses.
+- [x] **Create the repository with basic files**
+  - [x] Add a README with prerequisites and a quick 3-step setup including `pre-commit` installation.
+  - [x] Include an Apache 2.0 LICENSE file in the root.
+  - [x] Maintain a third-party inventory for dependency licenses.
 
-- [ ] **Prepare contributor and community files**
-  - [ ] Add `CONTRIBUTING.md` describing the workflow for forking, branch naming, and the PR template.
-  - [ ] Include a Contributor Covenant `CODE_OF_CONDUCT.md`.
-  - [ ] Enable a CLA workflow so external contributors sign before merging PRs.
+- [x] **Prepare contributor and community files**
+  - [x] Add `CONTRIBUTING.md` describing the workflow for forking, branch naming, and the PR template.
+  - [x] Include a Contributor Covenant `CODE_OF_CONDUCT.md`.
+  - [x] Enable a CLA workflow so external contributors sign before merging PRs.
 
 - [ ] **Establish branching and commit rules**
   - [ ] Use the documented branch types (`main`, `feat/<desc>`, `docs/<topic>`, `release/vX.Y.Z`, `hotfix/vX.Y.Z`, `chore/ct-update-<date>`).
