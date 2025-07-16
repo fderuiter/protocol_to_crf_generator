@@ -119,4 +119,3 @@ NFR-30 Deployment and rollback procedures must follow the runbook with health ch
 * [Third-Party Inventory](docs/spec/7_Governance%20&%20Compliance/1_License%20&%20Third-Party%20Software%20Inventory/third-party-inventory.md)
 * [Threat Model](docs/spec/7_Governance%20&%20Compliance/2_Security%20&%20Privacy%20Threat%20Model/threat-model.md)
 * [Technical Plan](docs/spec/technical-plan.md)
-
