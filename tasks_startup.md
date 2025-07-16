@@ -44,7 +44,7 @@ This document lists the tasks required to set up the repository and project on G
 
 - [ ] **Use GitHub issues and PRs as the canonical communication channel**
   - [x] Track tasks and decisions in issues and keep discussions in PRs for auditability.
-  - [ ] Use GitHub Projects for backlog grooming and link meeting notes to issues or PRs.
+  - [x] Use GitHub Projects for backlog grooming and link meeting notes to issues or PRs.
 
 - [ ] **Plan future work**
   - [ ] After completing the above tasks, create a new robust, comprehensive, and precise task list outlining the next steps for the project.

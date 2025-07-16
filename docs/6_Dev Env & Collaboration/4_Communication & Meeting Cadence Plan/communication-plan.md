@@ -22,6 +22,8 @@ This plan defines how collaboration occurs on the Protocol to CRF Generator proj
 
 These meetings may be cancelled if there are no agenda items. Action items are captured in GitHub Issues for traceability.
 
+Backlog grooming sessions review the GitHub Project board to prioritise work. Notes from these meetings, and from other ceremonies, should be added as comments on the relevant issue or pull request. The Project item should link to those discussions so that the board and issue history provide a complete record.
+
 ## Async Updates & Decision Logging
 
 All substantial design or process decisions are documented in Architecture Decision Records (ADRs) stored under `docs/3_Architecture & Design`. When a discussion in Slack or a meeting leads to a new decision, a short note with a link to the relevant ADR or issue is posted in the meeting thread.
