@@ -58,6 +58,14 @@ This project follows a clear Git strategy:
 - Pull requests must target `main` and are squash merged after approval and passing checks.
 - Releases are tagged using `vMAJOR.MINOR.PATCH` to trigger the deployment pipeline.
 
+## Communication
+
+We use GitHub Issues for tracking tasks and decisions, and pull requests for
+code review. Meeting notes and important discussions should be summarised in
+the relevant issue or PR to maintain a canonical record. See the [Communication
+Plan](docs/6_Dev%20Env%20&%20Collaboration/4_Communication%20&%20Meeting%20Cadence%20Plan/communication-plan.md)
+for details.
+
 ## License
 
 This project is distributed under the [Apache 2.0](LICENSE) license.

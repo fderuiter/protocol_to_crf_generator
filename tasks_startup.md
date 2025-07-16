@@ -42,7 +42,7 @@ This document lists the tasks required to set up the repository and project on G
   - [x] Document Docker-based deployment and rollback steps in the repository runbook.
   - [x] Publish static documentation with MkDocs using the Material theme.
 
-- [ ] **Use GitHub issues and PRs as the canonical communication channel**
+- [x] **Use GitHub issues and PRs as the canonical communication channel**
   - [x] Track tasks and decisions in issues and keep discussions in PRs for auditability.
   - [x] Use GitHub Projects for backlog grooming and link meeting notes to issues or PRs.
 
