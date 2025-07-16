@@ -46,5 +46,30 @@ This document lists the tasks required to set up the repository and project on G
   - [x] Track tasks and decisions in issues and keep discussions in PRs for auditability.
   - [x] Use GitHub Projects for backlog grooming and link meeting notes to issues or PRs.
 
-- [ ] **Plan future work**
-  - [ ] After completing the above tasks, create a new robust, comprehensive, and precise task list outlining the next steps for the project.
+- [x] **Plan future work**
+  - [x] After completing the above tasks, create a new robust, comprehensive, and precise task list outlining the next steps for the project.
+
+## Future Work
+
+- [ ] **Phase 1: Core Engine and Foundational Domains (MVP)**
+  - [ ] Implement the CI/CD pipeline foundation (lint, test, package).
+  - [ ] Manage CDISC reference data (ODM schemas and CT SQLite database).
+  - [ ] Build the DOCX protocol importer.
+  - [ ] Develop the NLP pipeline for sentence segmentation and section detection.
+  - [ ] Implement rule-based NER and mapping for Demographics (DM), Vital Signs (VS), and Concomitant Medications (CM).
+  - [ ] Generate ODM and Markdown artefacts.
+  - [ ] Add structural and controlled terminology validation layers.
+  - [ ] Provide a CLI entry point for the pipeline.
+
+- [ ] **Phase 2: Expanded Domain Coverage & API**
+  - [ ] Extend NER and mapping to Adverse Events (AE), Medical History (MH), Disposition (DS), and Exposure (EX).
+  - [ ] Develop and deploy the FastAPI REST API.
+  - [ ] Automate CT updates via a GitHub Action.
+  - [ ] Publish user documentation, API reference, and a mapping guide.
+
+- [ ] **Phase 3: Advanced Features & Governance**
+  - [ ] Build an optional SPA Web UI for file upload and download.
+  - [ ] Implement PDF and structured XML importers.
+  - [ ] Train a statistical NER model using data bootstrapped from the rule-based system.
+  - [ ] Integrate the CDISC CORE validation engine.
+  - [ ] Establish the formal governance framework and contribution process.
