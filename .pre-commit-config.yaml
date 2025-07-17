@@ -8,3 +8,10 @@ repos:
     hooks:
       - id: mypy
         args: ["--strict"]
+  - repo: local
+    hooks:
+      - id: validate-markdown
+        name: validate-markdown
+        entry: python scripts/validate_markdown.py
+        language: python
+        types: [markdown]

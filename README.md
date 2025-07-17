@@ -18,18 +18,23 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
 ## 3‑Step Setup
 
 1. Clone the repository
+
    ```bash
    git clone https://github.com/your-org/protocol-to-crf-generator.git
    cd protocol-to-crf-generator
    ```
+
 2. Install dependencies in a virtual environment
+
    ```bash
    python -m venv .venv
    source .venv/bin/activate
    pip install -r requirements.txt
    pre-commit install
    ```
+
 3. Run the CLI
+
    ```bash
    python -m protocol_to_crf_generator --help
    ```
@@ -43,9 +48,11 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
 ## Running Tests
 
 Execute the full suite with coverage:
+
 ```bash
 pytest -n auto --cov
 ```
+
 Tests should pass and coverage remain ≥90% as specified in the [test strategy](docs/spec/5_Quality%20&%20Ops/1_Test%20Strategy%20&%20Definition%20of%20Done/test-strategy.md).
 
 ## Contributing

@@ -33,4 +33,3 @@ Changes to supported standards correspond to semantic version bumps of the tool:
 
 - **MAJOR** release – adds support for or removes a major standard version.
 - **MINOR** release – adds a new backward-compatible standard such as an updated CT package.
-
