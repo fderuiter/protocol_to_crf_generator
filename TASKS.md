@@ -1,387 +1,228 @@
 <!--
 agent:
   project: "Protocol to CRF Generator"
-  code_style: "ruff,mypy"
+  code_style: "black,pylint"
   default_branch: "main"
   commit_template: "[{id}] {title}"
-  milestones:
-    M1: "Prototype"
-    M2: "Beta"
-    M3: "GA"
+milestones:
+  - {tag: M0, name: "Setup & Scaffolding", target: "2025-07-31"}
+  - {tag: M1, name: "Prototype",           target: "2025-12-31"}
+  - {tag: M2, name: "Public Beta",         target: "2026-06-30"}
+  - {tag: M3, name: "GA",                  target: "2026-12-31"}
 -->
 
 <!-- task:start -->
-id: T1
-title: "Define StudyProtocolIR Pydantic models"
+id: 2025-07-16-001
+phase: M0
+title: "Create GitHub repository and main branch"
 status: TODO
 priority: P0
-owner: ai
+owner: Frederick de Ruiter
 depends_on: []
-path: protocol_to_crf_generator/models/study_ir.py
-tests:
-  - tests/models/test_study_ir.py
-acceptance:
-  - "Pydantic schema matches example in technical plan"
-  - "ruff and mypy pass"
-  - "pytest coverage >=90%"
-context: |
-  Section 4.3 of the technical plan describes a Canonical Study Requirements JSON with models StudyProtocolIR and DataCollectionRequirement. Lines 256-289 show example fields and rationale.
-instructions: |
-  - Create `models/study_ir.py` defining `Provenance`, `DataCollectionRequirement`, and `StudyProtocolIR` using Pydantic.
-  - Include JSON canonicalization utility per RFC 8785.
-  - Add unit tests in `tests/models/test_study_ir.py` verifying model validation and canonicalization.
-  - Run ruff, mypy, and pytest ensuring coverage.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T2
-title: "Set up GitHub Actions CI pipeline"
-status: TODO
-priority: P0
-owner: ai
-depends_on: []
-path: .github/workflows/main.yml
+path: "."
 tests: []
 acceptance:
-  - "Workflow runs ruff, mypy, pytest, security scans and packaging"
-  - "Pipeline passes on branch pushes"
+  - "Repository exists on GitHub"
+  - "Default branch named 'main'"
 context: |
-  Section 2.3 and the CI/CD Pipeline Blueprint specify a GitHub Actions workflow with jobs: lint-and-format, unit-test, security-scan, schema-validate-artefacts, package, deploy.
+  The communication plan specifies all work targets the `main` branch.
 instructions: |
-  - Create `.github/workflows/main.yml` implementing the job sequence from `docs/spec/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md`.
-  - Include steps for ruff, mypy --strict, pytest with coverage, bandit and semgrep scans, and packaging Docker image.
-  - Configure workflow to trigger on push and pull_request to `main`.
+  - Initialize a new GitHub repository named `protocol-to-crf-generator`.
+  - Create the default branch `main` and push an initial commit.
 <!-- task:end -->
 
 <!-- task:start -->
-id: T3
-title: "Implement terminology database builder and service"
-status: TODO
-priority: P0
-owner: ai
-depends_on: []
-path: protocol_to_crf_generator/terminology
-tests:
-  - tests/terminology/test_service.py
-acceptance:
-  - "SQLite terminology.sqlite produced from CT package"
-  - "TerminologyService lookups return expected values"
-context: |
-  Section 3.2 of the technical plan outlines building a normalized SQLite database from CDISC Controlled Terminology and providing a TerminologyService for lookups.
-instructions: |
-  - Add `terminology/build_db.py` that parses raw CT TSV/CSV and writes `terminology.sqlite` with codelists and terms tables.
-  - Add `terminology/service.py` exposing lookup methods `get_terms_for_codelist` and `is_valid_term`.
-  - Write unit tests using sample CT files to verify DB generation and service queries.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T4
-title: "Create DOCX importer"
+id: 2025-07-16-002
+phase: M0
+title: "Seed project documentation and policies"
 status: TODO
 priority: P0
 owner: ai
 depends_on:
-  - T1
-path: protocol_to_crf_generator/ingestion/docx.py
-tests:
-  - tests/ingestion/test_docx.py
+  - 2025-07-16-001
+path:
+  - README.md
+  - LICENSE
+  - CODE_OF_CONDUCT.md
+  - CONTRIBUTING.md
+  - GOVERNANCE.md
+tests: []
 acceptance:
-  - "Extractor returns text and tables from DOCX"
-  - "Unit tests cover parsing of paragraphs and tables"
+  - "Files render correctly on GitHub"
 context: |
-  Technical plan Section 4.1 decision 1 mandates a python-docx based importer for DOCX protocols including table extraction with textacy assistance.
+  The project charter and governance sections require a clear README, contribution guidelines, code of conduct and Apache 2.0 license.
 instructions: |
-  - Implement `DocxImporter` class providing `parse(path: Path) -> StudyProtocolIR` skeleton.
-  - Use python-docx to read paragraphs and tables; emit structured content.
-  - Include basic sentence segmentation hooks for later NLP stages.
-  - Add tests with small sample DOCX files verifying extracted structure.
+  - Add a concise `README.md` describing the project purpose and setup steps.
+  - Include `LICENSE` with Apache 2.0 text.
+  - Provide `CODE_OF_CONDUCT.md` and `CONTRIBUTING.md` summarising collaboration rules.
+  - Create `GOVERNANCE.md` outlining how decisions and releases are managed.
 <!-- task:end -->
 
 <!-- task:start -->
-id: T5
-title: "Build NLP segmentation pipeline"
+id: 2025-07-16-003
+phase: M0
+title: "Add Python package scaffolding"
 status: TODO
 priority: P0
 owner: ai
 depends_on:
-  - T4
-path: protocol_to_crf_generator/nlp/pipeline.py
-tests:
-  - tests/nlp/test_pipeline.py
-acceptance:
-  - "PyRuSH sentence splitter segments text"
-  - "Section headers identified via medspaCy"
-context: |
-  Section 4.2 describes using medspaCy's PyRuSH and section detection components for sentence segmentation and section classification.
-instructions: |
-  - Implement an NLP pipeline using spaCy and medspaCy with PyRuSH and sectionizer components.
-  - Provide functions to process text from importers and return annotated Doc objects.
-  - Unit tests supply sample text asserting correct sentence boundaries and section labels.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T6
-title: "Map DM/VS/CM requirements to CDASH"
-status: TODO
-priority: P0
-owner: ai
-depends_on:
-  - T3
-  - T5
-path: protocol_to_crf_generator/mapping/cdash_mapper.py
-tests:
-  - tests/mapping/test_cdash_mapper.py
-acceptance:
-  - "Extracted requirements map to CDASH variables with confidence score"
-  - "Unmapped items flagged"
-context: |
-  Section 5.1 explains mapping each DataCollectionRequirement to CDASH variable metadata using fuzzy matching; Section 5.2 requires flagging unmapped items.
-instructions: |
-  - Implement mapping logic using Levenshtein/Jaro-Winkler distance against metadata loaded via TerminologyService.
-  - Return mapping results with confidence values and collect unmapped items.
-  - Unit tests cover DM, VS, CM examples and verify unmapped flagging below threshold.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T7
-title: "Generate ODM XML/JSON from mappings"
-status: TODO
-priority: P0
-owner: ai
-depends_on:
-  - T6
-  - T1
-path: protocol_to_crf_generator/odm/generator.py
-tests:
-  - tests/odm/test_generator.py
-acceptance:
-  - "ODM-XML and ODM-JSON files validate against cached schemas"
-context: |
-  Section 5.3 states the system outputs CDISC ODM 2.0 structures serialized to XML and JSON using typed models from Section 3.1.
-instructions: |
-  - Generate typed models from cached schemas using xsdata/datamodel-code-generator.
-  - Implement functions to build ItemDef, ItemGroupDef, FormDef, and serialize to XML and JSON.
-  - Use lxml and jsonschema in tests to validate generated files.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T8
-title: "Render Markdown CRFs with Jinja templates"
-status: TODO
-priority: P0
-owner: ai
-depends_on:
-  - T7
-path: protocol_to_crf_generator/templates
-tests:
-  - tests/templates/test_render_crf.py
-acceptance:
-  - "Markdown files include YAML front-matter per spec"
-  - "Matching .odm.json saved alongside .md"
-context: |
-  Section 6 defines YAML front-matter schema and Jinja2 templates for CRF generation. Section 6.3 requires emitting .md and .odm.json pairs.
-instructions: |
-  - Create Jinja2 templates (crf.md.j2 plus subtemplates) rendering ODM JSON to Markdown with YAML metadata.
-  - Implement renderer saving both .md and source .odm.json in output directory.
-  - Unit tests render sample ODM and assert output structure.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T9
-title: "Implement CLI using click"
-status: TODO
-priority: P0
-owner: ai
-depends_on:
-  - T8
-path: protocol_to_crf_generator/cli.py
+  - 2025-07-16-002
+path:
+  - pyproject.toml
+  - protocol_to_crf_generator/__init__.py
+  - protocol_to_crf_generator/__main__.py
 tests:
   - tests/test_cli.py
 acceptance:
-  - "`crf-gen` command generates CRF artefacts from DOCX input"
+  - "`python -m protocol_to_crf_generator --version` prints version"
 context: |
-  Technical plan Section 9.1 selects click for a user-friendly CLI exposing core functionality.
+  The technical plan specifies a CLI tool and a modular Python package.
 instructions: |
-  - Replace the simple argparse entrypoint with a click-based CLI named `crf-gen`.
-  - Provide options for input file, output directory, and CT version.
-  - Hook into importer, NLP, mapping, generation, and validation steps.
-  - Update existing tests to invoke the new command.
+  - Create `pyproject.toml` configuring `ruff` and `mypy` as described in the coding style guide.
+  - Implement a minimal package with `__version__` and CLI entry point that accepts `--version`.
+  - Write `tests/test_cli.py` exercising the CLI stub.
 <!-- task:end -->
 
 <!-- task:start -->
-id: T10
-title: "Add Dockerfile and container build"
+id: 2025-07-16-004
+phase: M0
+title: "Create .gitignore for Python artifacts"
 status: TODO
 priority: P1
 owner: ai
 depends_on:
-  - T9
-  - T2
-path: Dockerfile
+  - 2025-07-16-003
+path: .gitignore
 tests: []
 acceptance:
-  - "Docker image builds via CI pipeline"
+  - "Untracked files from virtualenvs and compiled artefacts are ignored"
 context: |
-  Section 9.2 mandates containerisation with Docker and publishing images in CI.
+  Standard Python projects exclude build outputs and editor files.
 instructions: |
-  - Create a multi-stage Dockerfile based on python:3.11-slim installing dependencies and running the FastAPI server by default.
-  - Ensure CLI can be executed via `docker run` by overriding entrypoint.
-  - Update CI packaging job to build and publish the image.
+  - Add a `.gitignore` covering common Python patterns (`__pycache__`, `.venv`, `*.pyc`, `/dist`).
 <!-- task:end -->
 
 <!-- task:start -->
-id: T11
-title: "Validate generated ODM and CT business rules"
+id: 2025-07-16-005
+phase: M0
+title: "Configure pre-commit with ruff and mypy"
 status: TODO
-priority: P1
+priority: P0
 owner: ai
 depends_on:
-  - T7
-  - T3
-path: protocol_to_crf_generator/validation/validator.py
-tests:
-  - tests/validation/test_validator.py
-acceptance:
-  - "Invalid ODM fails with clear errors"
-  - "CT checks verify permissible values"
-context: |
-  Section 7 describes structural validation against ODM schemas and controlled terminology checks, with future integration to CDISC CORE.
-instructions: |
-  - Implement validation functions using lxml for XML and jsonschema for JSON.
-  - Cross-check codelist values against TerminologyService and flag violations.
-  - Produce validation-log.json and HTML report.
-  - Unit tests cover valid and invalid examples.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T12
-title: "Expose FastAPI REST API"
-status: TODO
-priority: P1
-owner: ai
-depends_on:
-  - T9
-  - T11
-path: protocol_to_crf_generator/api/main.py
-tests:
-  - tests/api/test_api.py
-acceptance:
-  - "POST /ingest queues job and returns job_id"
-  - "OpenAPI docs auto-generated"
-context: |
-  Sections 9.1 and API contract docs outline a FastAPI gateway exposing endpoints for ingestion and retrieval.
-instructions: |
-  - Build FastAPI app with endpoint `/ingest` accepting file uploads and options.
-  - Use background tasks to run the full pipeline and store results.
-  - Enable automatic OpenAPI docs at `/docs`.
-  - Write tests with TestClient verifying endpoint behaviour.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T13
-title: "Automate quarterly CT updates"
-status: TODO
-priority: P1
-owner: ai
-depends_on:
-  - T3
-  - T2
-path: .github/workflows/update_ct.yml
+  - 2025-07-16-003
+path: .pre-commit-config.yaml
 tests: []
 acceptance:
-  - "Workflow opens PR when new CT version detected"
+  - "`pre-commit run --all-files` succeeds"
 context: |
-  Technical plan Section 3.4 specifies a scheduled GitHub Actions workflow that fetches new CT packages and creates a pull request with updated terminology.sqlite.
+  The coding standards document mandates ruff formatting and mypy strict type checks before every commit.
 instructions: |
-  - Create workflow triggered weekly on cron.
-  - Implement steps to check NCI-EVS FTP for latest version, run build_db.py, commit database, and open PR using gh cli.
-  - Ensure PR runs full CI pipeline.
+  - Create `.pre-commit-config.yaml` using the snippet from the style guide.
+  - Document running `pre-commit install` in the README.
 <!-- task:end -->
 
 <!-- task:start -->
-id: T14
-title: "Extend mapping to AE/MH/DS/EX domains"
+id: 2025-07-16-006
+phase: M0
+title: "Add unit test placeholder"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-003
+path: tests/test_placeholder.py
+tests:
+  - tests/test_placeholder.py
+acceptance:
+  - "`pytest` runs and passes"
+context: |
+  A minimal test ensures the CI pipeline has something to execute.
+instructions: |
+  - Create `tests/test_placeholder.py` with a trivial assertion.
+  - Ensure the package installs in editable mode for testing.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-16-007
+phase: M0
+title: "Set up GitHub Actions CI workflow"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-16-005
+  - 2025-07-16-006
+path: .github/workflows/ci.yml
+tests: []
+acceptance:
+  - "Workflow runs lint, mypy and pytest on pull requests"
+  - "All jobs succeed"
+context: |
+  The CI/CD blueprint defines a job sequence starting with lint-and-format, then unit tests.
+instructions: |
+  - Create `.github/workflows/ci.yml` implementing `lint-and-format` (ruff & mypy) and `unit-test` jobs.
+  - Trigger on `push` and `pull_request` events targeting `main`.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-16-008
+phase: M0
+title: "Add pull request template"
 status: TODO
 priority: P2
 owner: ai
 depends_on:
-  - T6
-path: protocol_to_crf_generator/mapping/cdash_mapper.py
-tests:
-  - tests/mapping/test_additional_domains.py
+  - 2025-07-16-002
+path: .github/pull_request_template.md
+tests: []
 acceptance:
-  - "New domains map correctly using existing framework"
+  - "Template references CONTRIBUTING guidelines"
 context: |
-  The roadmap lists additional domain support (AE, MH, DS, EX) in Q2 after the initial DM/VS/CM mapping.
+  Pull requests are the main communication channel per the communication plan.
 instructions: |
-  - Expand metadata tables to include variables for AE, MH, DS, and EX.
-  - Update mapping logic and tests to cover these domains.
+  - Create `.github/pull_request_template.md` with summary and testing sections mirroring the CONTRIBUTING instructions.
 <!-- task:end -->
 
 <!-- task:start -->
-id: T15
-title: "Add PDF and XML importers"
+id: 2025-07-16-009
+phase: M0
+title: "Enable Dependabot for dependencies"
 status: TODO
 priority: P2
 owner: ai
 depends_on:
-  - T4
-path: protocol_to_crf_generator/ingestion
-tests:
-  - tests/ingestion/test_pdf.py
-  - tests/ingestion/test_xml.py
-acceptance:
-  - "PDF and XML files parsed into StudyProtocolIR"
-context: |
-  Section 4.1 describes PDF and structured XML importers using pdfminer-six and lxml with XPath extraction.
-instructions: |
-  - Implement `PdfImporter` leveraging pdfminer-six and optional camelot/tabula for tables.
-  - Implement `XmlImporter` using lxml to extract required elements via XPath.
-  - Add unit tests with minimal sample documents verifying output.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T16
-title: "Train statistical NER model and integrate CDISC CORE"
-status: TODO
-priority: P3
-owner: ai
-depends_on:
-  - T5
-  - T11
-path: protocol_to_crf_generator/nlp/model
-tests:
-  - tests/nlp/test_ner_model.py
-  - tests/validation/test_core_integration.py
-acceptance:
-  - "NER model achieves recall ≥0.8 on test corpus"
-  - "Validation uses CDISC CORE rules when available"
-context: |
-  The roadmap for Q3 includes statistical NER model training and CDISC CORE integration for advanced validation as per Section 7.2.
-instructions: |
-  - Prepare training data from labelled protocol snippets and train a spaCy model.
-  - Load the model in the NLP pipeline when available.
-  - Integrate cdisc-rules-engine to run official rules during validation, gating on model output.
-  - Add tests evaluating model performance on sample texts and verifying CORE rule invocation.
-<!-- task:end -->
-
-<!-- task:start -->
-id: T17
-title: "Develop optional React SPA"
-status: TODO
-priority: P3
-owner: ai
-depends_on:
-  - T12
-path: ui
+  - 2025-07-16-001
+path: .github/dependabot.yml
 tests: []
 acceptance:
-  - "Users can upload protocol and download ZIP of artefacts"
+  - "Dependabot opens PRs for GitHub Actions and pip updates"
 context: |
-  Section 9.3 and multiple references describe an optional Single-Page Application built with React that interacts with the REST API.
+  The CI/CD blueprint recommends automated dependency monitoring.
 instructions: |
-  - Scaffold a React app (e.g., using Vite) under `ui/` providing a file upload form.
-  - Call the FastAPI backend to trigger generation and offer a download link.
-  - Document build and deployment steps in README.
+  - Add `.github/dependabot.yml` covering `github-actions` and `pip` ecosystems.
+  - Schedule weekly checks.
 <!-- task:end -->
 
+<!-- task:start -->
+id: 2025-07-16-010
+phase: M0
+title: "Add ADR folder with system architecture record"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-002
+path: docs/adr/0001-system-architecture.md
+tests: []
+acceptance:
+  - "ADR mirrors content from specification"
+context: |
+  The architecture decision record from the specification should be versioned under `docs/adr` for future changes.
+instructions: |
+  - Create `docs/adr/` directory.
+  - Copy the initial system architecture ADR from `docs/spec/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md`.
+  - Include ADR index in `docs/adr/README.md` if helpful.
+<!-- task:end -->
+
+<!-- End of TASKS.md -->
