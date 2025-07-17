@@ -1,6 +1,6 @@
 # API Contract – FastAPI Gateway
 
-This contract defines the public REST endpoints exposed by the FastAPI gateway component. It aligns with the principles outlined in the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+This contract defines the public REST endpoints exposed by the FastAPI gateway component. It aligns with the principles outlined in the [CDISC CRF Generation Technical Plan](../../technical-plan.md).
 
 ## OpenAPI 3.1 Stub
 ```yaml

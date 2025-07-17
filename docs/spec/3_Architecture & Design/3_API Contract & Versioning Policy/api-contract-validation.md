@@ -1,6 +1,6 @@
 # API Contract – Validation Service
 
-The validation microservice checks generated CRFs for standards compliance. It uses the interfaces defined in the [Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+The validation microservice checks generated CRFs for standards compliance. It uses the interfaces defined in the [Technical Plan](../../technical-plan.md).
 
 ## OpenAPI 3.1 Stub
 ```yaml

@@ -1,6 +1,6 @@
 # Python Coding Standards & Style Guide
 
-This guide defines the coding conventions for the Protocol to CRF Generator project. It summarises the practices set forth in the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md) and expands on them with concrete examples.
+This guide defines the coding conventions for the Protocol to CRF Generator project. It summarises the practices set forth in the [CDISC CRF Generation Technical Plan](../../technical-plan.md) and expands on them with concrete examples.
 
 ## Formatting & Linting
 

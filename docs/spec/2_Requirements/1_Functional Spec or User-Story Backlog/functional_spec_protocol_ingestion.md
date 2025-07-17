@@ -1,7 +1,8 @@
 # Functional Specification – Protocol Ingestion & Information Extraction
+<a id="functional-spec-protocol-ingestion"></a>
 
 This specification expands on requirements in the
-[**CDISC CRF Generation Technical Plan**](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+[**CDISC CRF Generation Technical Plan**](../../technical-plan.md).
 
 > **Context & Goals**  
 > The Protocol Ingestion & Information Extraction (PIIE) feature automates the conversion of heterogeneous study‑protocol documents (DOCX, PDF, XML) into a validated **Study Requirements JSON** that downstream components (mapping, CRF generation, validation) consume.  

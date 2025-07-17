@@ -1,6 +1,6 @@
 # API Contract – Mapping Generation Service
 
-This microservice converts extracted study requirements into CDISC-compliant CRF artefacts. Design principles follow the [Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+This microservice converts extracted study requirements into CDISC-compliant CRF artefacts. Design principles follow the [Technical Plan](../../technical-plan.md).
 
 ## OpenAPI 3.1 Stub
 ```yaml

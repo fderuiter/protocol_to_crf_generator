@@ -1,6 +1,6 @@
 # API Contract – CLI Wrapper
 
-This service exposes a thin HTTP interface used by the command-line client. It mirrors the gateway policies from the [Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+This service exposes a thin HTTP interface used by the command-line client. It mirrors the gateway policies from the [Technical Plan](../../technical-plan.md).
 
 ## OpenAPI 3.1 Stub
 ```yaml

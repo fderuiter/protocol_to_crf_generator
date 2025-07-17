@@ -1,6 +1,6 @@
 # CI/CD Pipeline Blueprint
 
-This blueprint expands on Section 2.3 of the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md). The pipeline is implemented with **GitHub Actions** and provides the auditable SDLC required for 21 CFR Part 11 compliance.
+This blueprint expands on Section 2.3 of the [CDISC CRF Generation Technical Plan](../../technical-plan.md). The pipeline is implemented with **GitHub Actions** and provides the auditable SDLC required for 21 CFR Part 11 compliance.
 
 ## Workflow Triggers
 - **Push / Pull Request** to `main` trigger the primary workflow defined in `.github/workflows/main.yml`.

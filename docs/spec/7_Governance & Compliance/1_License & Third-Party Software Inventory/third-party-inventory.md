@@ -1,6 +1,6 @@
 # License & Third-Party Software Inventory
 
-This inventory lists the external dependencies referenced in the project and their associated licenses. The project itself is released under the Apache&nbsp;2.0 license as described in the [technical plan](../CDISC%20CRF%20Generation%20Technical%20Plan_.md). Keeping an accurate inventory helps ensure compliance with open‑source obligations and simplifies future audits.
+This inventory lists the external dependencies referenced in the project and their associated licenses. The project itself is released under the Apache&nbsp;2.0 license as described in the [technical plan](../technical-plan.md). Keeping an accurate inventory helps ensure compliance with open‑source obligations and simplifies future audits.
 
 | Package | Version | License | URL | Usage | Notes |
 | --- | --- | --- | --- | --- | --- |
