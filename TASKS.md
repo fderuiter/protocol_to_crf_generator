@@ -9,6 +9,7 @@ milestones:
   - {tag: M1, name: "Prototype",           target: "2025-12-31"}
   - {tag: M2, name: "Public Beta",         target: "2026-06-30"}
   - {tag: M3, name: "GA",                  target: "2026-12-31"}
+  - {tag: M4, name: "Continuous Improvement & Scale-Out", target: "TBD"}
 -->
 
 <!-- task:start -->
@@ -1575,4 +1576,706 @@ instructions: |
   - Update the register noting which risks were mitigated or accepted.
   - Document residual severity and link to supporting evidence.
 <!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-001
+phase: M4
+title: "Tune autoscaling thresholds for REST workers"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-18-002
+path:
+  - deploy/hpa.yaml
+  - tests/performance/test_autoscale.py
+tests:
+  - tests/performance/test_autoscale.py
+acceptance:
+  - "CPU utilisation ≤70% at 2× peak load"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  NFR checklist targets ≤70 % CPU at 2× load and linear throughput. Post-GA metrics show workers spiking to 85 % during peak.
+instructions: |
+  - Add HPA configuration in `deploy/hpa.yaml` with tuned thresholds.
+  - Implement load test `test_autoscale.py` verifying scaling behaviour.
+  - Document autoscaling settings in deployment guide.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-002
+phase: M4
+title: "Audit SQLite indexes for terminology lookups"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-014
+path:
+  - protocol_to_crf_generator/db/index_audit.py
+  - tests/performance/test_index_audit.py
+tests:
+  - tests/performance/test_index_audit.py
+acceptance:
+  - "Term lookup latency <50 ms P95 across 75k rows"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  NFR dataset scaling metric requires <50 ms lookups. Profiling identified slow queries lacking indexes.
+instructions: |
+  - Create script `index_audit.py` to analyze query plans and recommend indexes.
+  - Add or adjust indexes in the terminology database.
+  - Provide regression test `test_index_audit.py` measuring lookup latency.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-003
+phase: M4
+title: "Enable spot instances for batch processing workers"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-18-001
+path:
+  - deploy/spot-instance.tf
+tests: []
+acceptance:
+  - "Monthly compute cost for batch jobs reduced by ≥20%"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Finance reports highlight rising batch-processing spend. Spot instances can cut costs if jobs are retryable.
+instructions: |
+  - Define Terraform module `spot-instance.tf` provisioning spot-capable nodes.
+  - Update batch worker deployment to tolerate interruptions.
+  - Document cost impact and rollback strategy.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-004
+phase: M4
+title: "Expose CRF diff endpoint for version comparisons"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-17-027
+path:
+  - protocol_to_crf_generator/api/diff.py
+  - tests/test_diff_endpoint.py
+tests:
+  - tests/test_diff_endpoint.py
+acceptance:
+  - "API returns structured diff of two CRF versions"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  User feedback notes difficulty tracking changes between protocol revisions.
+instructions: |
+  - Implement FastAPI route in `diff.py` accepting two CRF IDs.
+  - Generate a human-readable and JSON diff of form structures.
+  - Document usage with examples in API guide.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-005
+phase: M4
+title: "Add asynchronous batch submission API"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-004
+path:
+  - protocol_to_crf_generator/api/batch.py
+  - tests/test_batch_api.py
+tests:
+  - tests/test_batch_api.py
+acceptance:
+  - "Batch endpoint accepts up to 100 protocols and returns job IDs"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Feedback summary indicates need for large protocol submissions without waiting for synchronous completion.
+instructions: |
+  - Create FastAPI router `batch.py` with background task queue integration.
+  - Add job status endpoint to poll progress.
+  - Provide tests ensuring jobs enqueue and complete successfully.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-006
+phase: M4
+title: "Support protocol anonymization via CLI flag"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-16-003
+path:
+  - protocol_to_crf_generator/cli/anonymize.py
+  - tests/test_anonymize_cli.py
+tests:
+  - tests/test_anonymize_cli.py
+acceptance:
+  - "Sensitive identifiers removed when --anonymize flag is used"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Compliance reviews suggest an anonymization option for sharing sample protocols publicly.
+instructions: |
+  - Implement `anonymize.py` stripping patient names and IDs from input DOCX.
+  - Integrate flag into the existing CLI entry point.
+  - Document limitations and verify with tests.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-007
+phase: M4
+title: "Chaos testing with latency injection"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-18-002
+path:
+  - tests/performance/test_chaos.py
+  - docs/ops/chaos-exercises.md
+tests:
+  - tests/performance/test_chaos.py
+acceptance:
+  - "System maintains SLOs with 200ms added latency"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Reliability workstream introduces chaos experiments to validate resilience under network delays.
+instructions: |
+  - Use Toxiproxy or equivalent to inject latency in `test_chaos.py`.
+  - Document scenarios and outcomes in `chaos-exercises.md`.
+  - Integrate chaos tests into nightly CI schedule.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-008
+phase: M4
+title: "Quarterly incident response drill"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-18-002
+path:
+  - docs/ops/incident-drill-q1.md
+tests: []
+acceptance:
+  - "Drill summary recorded and action items tracked"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Post-GA operations require regular rehearsal of the incident playbook.
+instructions: |
+  - Schedule a simulated outage and execute the playbook.
+  - Capture response times and lessons learned in `incident-drill-q1.md`.
+  - Assign follow-up tasks for any gaps found.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-009
+phase: M4
+title: "Enforce error-budget policy in deployment pipeline"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-007
+path:
+  - .github/workflows/error-budget.yml
+tests: []
+acceptance:
+  - "Deploy job blocks when monthly SLO budget exhausted"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Observability dashboards track SLO burn rates. Automating enforcement prevents pushing risky changes.
+instructions: |
+  - Implement workflow `error-budget.yml` querying metrics before deployment.
+  - Fail the pipeline if the remaining error budget is below threshold.
+  - Document policy in the operations handbook.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-010
+phase: M4
+title: "Patch dependencies for CVE-2025-1234"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-034
+path:
+  - requirements.txt
+  - docs/security/advisory-2025-1234.md
+tests: []
+acceptance:
+  - "No vulnerable package versions remain after patch"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Security advisory CVE-2025-1234 affects a transitive dependency. Immediate patching is required.
+instructions: |
+  - Upgrade affected libraries in `requirements.txt`.
+  - Document remediation steps in `advisory-2025-1234.md`.
+  - Schedule a follow-up vulnerability scan.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-011
+phase: M4
+title: "Renew TLS certificates and rotate keys"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-018
+path:
+  - deploy/certs/
+  - docs/ops/cert-renewal.md
+tests: []
+acceptance:
+  - "New certificates deployed with zero downtime"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Certificates expire annually and must be rotated to maintain A+ TLS grade per NFR security targets.
+instructions: |
+  - Generate replacement certificates and store in `deploy/certs`.
+  - Document renewal process in `cert-renewal.md`.
+  - Update deployment pipeline to reload certificates without downtime.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-012
+phase: M4
+title: "Run threat-model delta review for new features"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-010
+path:
+  - docs/spec/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md
+tests: []
+acceptance:
+  - "Updated threat model reflects batch and diff APIs"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Introducing new endpoints requires reviewing STRIDE impacts and mitigation controls.
+instructions: |
+  - Reassess threats introduced by batch processing and diff functionality.
+  - Update diagrams and mitigation tables in the threat model document.
+  - Link evidence of review in compliance records.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-013
+phase: M4
+title: "Instrument OpenTelemetry metrics and tracing"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-001
+path:
+  - protocol_to_crf_generator/observability/otel.py
+  - tests/test_otel.py
+tests:
+  - tests/test_otel.py
+acceptance:
+  - "Request traces exported with <1% overhead"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Fine-grained observability will assist anomaly detection and performance tuning.
+instructions: |
+  - Add instrumentation in `otel.py` exposing traces and custom metrics.
+  - Provide tests verifying trace export and metric labels.
+  - Document setup instructions for collectors.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-014
+phase: M4
+title: "Implement anomaly detection on CRF build times"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-013
+path:
+  - observability/anomaly-detection.yaml
+tests: []
+acceptance:
+  - "Alerts fire when build time exceeds 7min P95 for 3 runs"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Post-GA metrics show occasional spikes above the 7 min P95 build target.
+instructions: |
+  - Create Prometheus rule file `anomaly-detection.yaml`.
+  - Configure alertmanager to notify on sustained anomalies.
+  - Document runbook steps for investigation.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-015
+phase: M4
+title: "Quarterly license re-scan with FOSSA"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-18-004
+path:
+  - .github/workflows/fossa.yml
+tests: []
+acceptance:
+  - "FOSSA report shows no policy violations"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Governance policy mandates quarterly verification of third-party licenses.
+instructions: |
+  - Set up `fossa.yml` to run on a quarterly schedule.
+  - Upload results to compliance storage and update inventory if needed.
+  - Note completion in release notes.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-016
+phase: M4
+title: "Collect SOC2 evidence for Q1"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-015
+path:
+  - docs/compliance/soc2/q1-evidence.md
+tests: []
+acceptance:
+  - "Evidence package uploaded for auditor review"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  SOC2 readiness activities require quarterly evidence capture.
+instructions: |
+  - Compile logs, policies and scan reports into `q1-evidence.md`.
+  - Store the package in the compliance repository.
+  - Notify the auditor per checklist.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-017
+phase: M4
+title: "Generate updated SBOM after dependency upgrades"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-010
+path:
+  - sbom/spdx_1.1.json
+tests: []
+acceptance:
+  - "SBOM reflects all current package versions"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Dependency patches require regenerating the SBOM to maintain accurate provenance records.
+instructions: |
+  - Use `spdx-tools` to produce `spdx_1.1.json` during the build.
+  - Archive the file with release artefacts.
+  - Update documentation referencing the new SBOM.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-018
+phase: M4
+title: "Automate monthly cloud spend reports"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-003
+path:
+  - finance/monthly_spend_report.py
+  - docs/finance/README.md
+tests: []
+acceptance:
+  - "Report generated and shared within 2 days of month end"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Cost governance efforts track monthly spending to catch overruns early.
+instructions: |
+  - Implement `monthly_spend_report.py` pulling cost data via cloud APIs.
+  - Document run schedule and recipients in `docs/finance/README.md`.
+  - Hook script into CI for automatic execution.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-019
+phase: M4
+title: "Set budget alert thresholds"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-018
+path:
+  - finance/budget_alerts.yaml
+tests: []
+acceptance:
+  - "Alerts trigger at 80% and 100% of monthly budget"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Finance guidelines require automated budget notifications to prevent overspend.
+instructions: |
+  - Define thresholds in `budget_alerts.yaml` for the reporting script.
+  - Integrate notifications with Slack and email.
+  - Review limits quarterly with finance.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-020
+phase: M4
+title: "Rightsize production resources based on utilisation"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-018
+path:
+  - deploy/rightsizing.md
+tests: []
+acceptance:
+  - "Average CPU utilisation 50‑70% across services"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Usage metrics reveal consistently low utilisation on some nodes. Adjusting resource limits saves costs.
+instructions: |
+  - Analyse historical Prometheus data to identify over-provisioned services.
+  - Record recommendations in `rightsizing.md` and implement via Helm charts.
+  - Monitor after change for performance regressions.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-021
+phase: M4
+title: "Refactor schema validation module"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-17-029
+path:
+  - protocol_to_crf_generator/validation/schema.py
+  - tests/test_schema_validation.py
+tests:
+  - tests/test_schema_validation.py
+acceptance:
+  - "Cyclomatic complexity ≤10 per function"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Static analysis flagged `schema.py` as a hotspot with complex logic.
+instructions: |
+  - Break down large functions into composable helpers.
+  - Update tests to cover refactored paths.
+  - Ensure behaviour remains backward compatible.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-022
+phase: M4
+title: "Upgrade FastAPI framework to latest LTS"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-19-010
+path:
+  - requirements.txt
+  - tests/test_cli.py
+tests:
+  - tests/test_cli.py
+acceptance:
+  - "Application runs on FastAPI LTS without regressions"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Upgrading to the LTS release provides long-term support and new features.
+instructions: |
+  - Update dependency in `requirements.txt` and resolve breaking changes.
+  - Run full test suite to confirm compatibility.
+  - Document upgrade notes in CHANGELOG.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-023
+phase: M4
+title: "Publish official Python SDK"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-005
+path:
+  - sdk/README.md
+  - sdk/setup.py
+  - tests/test_sdk.py
+tests:
+  - tests/test_sdk.py
+acceptance:
+  - "SDK available on PyPI with basic examples"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Community adoption is easier with an installable SDK wrapping API calls.
+instructions: |
+  - Implement SDK package under `sdk/` with convenience classes.
+  - Publish to PyPI and document usage in README.
+  - Maintain compatibility with REST API endpoints.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-024
+phase: M4
+title: "Document deprecation schedule for CLI flags"
+status: TODO
+priority: P3
+owner: ai
+depends_on:
+  - 2025-07-18-006
+path:
+  - docs/user-guide.md
+  - CHANGELOG.md
+tests: []
+acceptance:
+  - "Deprecated flags listed with removal versions"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Support tickets show confusion around old CLI options slated for removal.
+instructions: |
+  - Update `user-guide.md` and `CHANGELOG.md` with a deprecation timeline.
+  - Provide alternative commands and migration tips.
+  - Announce schedule in the next release notes.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-19-025
+phase: M4
+title: "Revise documentation based on support feedback"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-19-023
+path:
+  - docs/faq.md
+  - docs/troubleshooting.md
+tests: []
+acceptance:
+  - "Common setup issues addressed in FAQ"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Support tickets highlight missing guidance for environment setup and error messages.
+instructions: |
+  - Compile recurring questions into `faq.md`.
+  - Expand `troubleshooting.md` with solutions and log snippets.
+  - Cross-link from README and SDK docs.
+<!-- task:end -->
+
 <!-- End of TASKS.md -->
