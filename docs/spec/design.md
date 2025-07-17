@@ -11,22 +11,22 @@
 ---
 
 ## Context / Problem Statement
-The project aims to reduce manual CRF build effort from eight hours to under one hour by automating extraction, mapping and validation of protocol content. As described in the [Project Charter](docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md), the lightweight CLI/API should deliver validated CRF artefacts in minutes using only open‑source tooling. Key metrics include a turnaround time of **≤15 minutes** and mapping accuracy **≥90 %** across a regression corpus.
+The project aims to reduce manual CRF build effort from eight hours to under one hour by automating extraction, mapping and validation of protocol content. As described in the [Project Charter](1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md), the lightweight CLI/API should deliver validated CRF artefacts in minutes using only open‑source tooling. Key metrics include a turnaround time of **≤15 minutes** and mapping accuracy **≥90 %** across a regression corpus.
 
 ---
 
 ## Goals (✓)
-- Support DOCX/PDF protocol ingestion with automatic section detection and CSV table extraction. [Functional Spec](docs/spec/2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
+- Support DOCX/PDF protocol ingestion with automatic section detection and CSV table extraction. [Functional Spec](2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
 - Extract visits, assessments and timing entities with confidence ≥0.8 and capture provenance metadata.
 - Persist validated **StudyProtocolIR** JSON with a SHA‑256 manifest.
-- Provide both a command‑line interface and a containerised REST API. [Feature List](docs/spec/2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
+- Provide both a command‑line interface and a containerised REST API. [Feature List](2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
 - Generate CDASH v2.1 mapped ODM‑XML/JSON and Markdown CRFs.
 - Publish Docker images and PyPI packages on tagged releases with GitHub Actions.
 
 ---
 
 ## Non-Goals (✗)
-- Part 11 validated hosting or paid support is explicitly out of scope. [Project Charter](docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
+- Part 11 validated hosting or paid support is explicitly out of scope. [Project Charter](1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
 - Direct EDC database build/upload and SDTM conversion are not addressed in this phase.
 - Multi-user role-based access control will be considered later.
 - FHIR ResearchStudy importer is only a future-proof hook.
@@ -34,7 +34,7 @@ The project aims to reduce manual CRF build effort from eight hours to under one
 ---
 
 ## High-Level Solution Overview
-The system is a modular set of Docker containers orchestrated by GitHub Actions and deployable via Docker Compose or Kubernetes. A FastAPI gateway coordinates ingestion, NLP extraction, mapping, generation and validation services. Users interact through a CLI, REST API or optional web UI. The architecture below is adapted from [ADR‑0001](docs/spec/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md).
+The system is a modular set of Docker containers orchestrated by GitHub Actions and deployable via Docker Compose or Kubernetes. A FastAPI gateway coordinates ingestion, NLP extraction, mapping, generation and validation services. Users interact through a CLI, REST API or optional web UI. The architecture below is adapted from [ADR‑0001](3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md).
 
 ```mermaid
 graph TD
@@ -84,7 +84,7 @@ All APIs follow Semantic Versioning 2.0 with deprecated endpoints kept for one m
 ---
 
 ## Dependencies & Integration Points
-- External libraries: spaCy, medspaCy, FastAPI, Pydantic, PlantUML, pytest. [Third‑Party Inventory](docs/spec/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
+- External libraries: spaCy, medspaCy, FastAPI, Pydantic, PlantUML, pytest. [Third‑Party Inventory](7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
 - GitHub Actions for CI/CD pipelines and cron-based CT updates.
 - CDISC Controlled Terminology (NCI-EVS FTP) used during mapping.
 - Optional integration with EDC/CTMS systems via exported ODM files.
@@ -93,15 +93,15 @@ All APIs follow Semantic Versioning 2.0 with deprecated endpoints kept for one m
 ---
 
 ## Security, Privacy, Performance & Reliability
-- **Threat Mitigations:** TLS for all traffic, MFA for maintainer accounts, container isolation, and immutable audit logs as described in the [Threat Model](docs/spec/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md).
-- **Performance Targets:** End‑to‑end CRF build ≤5 min median and ≤7 min P95; API latency ≤200 ms P95 under 500 users; memory per worker ≤1 GB. [NFR Checklist](docs/spec/2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
+- **Threat Mitigations:** TLS for all traffic, MFA for maintainer accounts, container isolation, and immutable audit logs as described in the [Threat Model](7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md).
+- **Performance Targets:** End‑to‑end CRF build ≤5 min median and ≤7 min P95; API latency ≤200 ms P95 under 500 users; memory per worker ≤1 GB. [NFR Checklist](2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
 - **Reliability Goals:** Service uptime ≥99.9 %, task queue drains 100 jobs within 5 min, disaster recovery RTO ≤4 h and RPO ≤15 min.
 - **Security Controls:** RBAC coverage ≥95 % unit-test verified, zero critical CVEs, encrypted transport and storage achieving Qualys grade A+.
 
 ---
 
 ## Trade-offs & Alternatives Considered
-**Decision Drivers** (from [ADR‑0001](docs/spec/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md))
+**Decision Drivers** (from [ADR‑0001](3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md))
 1. Regulatory compliance & traceability
 2. Loose coupling to support CLI, API and SPA
 3. Portability via containers
@@ -132,7 +132,7 @@ All APIs follow Semantic Versioning 2.0 with deprecated endpoints kept for one m
 ---
 
 ## Rollout Plan
-Rollout follows the quarterly roadmap: foundation in Q1 (CI/CD, core NLP, CLI), expanded domains and REST API in Q2, Web UI and advanced importers in Q3, culminating in v1.0 release Q4. Deployments use the GitHub Actions pipeline described above and follow the [Deployment Runbook](docs/spec/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md) with health checks and rollback steps (`docker-compose down`, pull previous image, `alembic downgrade -1`).
+Rollout follows the quarterly roadmap: foundation in Q1 (CI/CD, core NLP, CLI), expanded domains and REST API in Q2, Web UI and advanced importers in Q3, culminating in v1.0 release Q4. Deployments use the GitHub Actions pipeline described above and follow the [Deployment Runbook](5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md) with health checks and rollback steps (`docker-compose down`, pull previous image, `alembic downgrade -1`).
 
 ---
 
@@ -146,35 +146,35 @@ Rollout follows the quarterly roadmap: foundation in Q1 (CI/CD, core NLP, CLI), 
 
 ## Appendix / References
 ### Vision & Scope
-- [Project Charter](docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
-- [Stakeholder Register](docs/spec/1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md)
+- [Project Charter](1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
+- [Stakeholder Register](1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md)
 
 ### Requirements
-- [Functional Spec – Protocol Ingestion](docs/spec/2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
-- [Feature List](docs/spec/2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
-- [NFR Checklist](docs/spec/2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
+- [Functional Spec – Protocol Ingestion](2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
+- [Feature List](2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
+- [NFR Checklist](2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
 
 ### Architecture & Design
-- [ADR‑0001 System Architecture](docs/spec/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md)
-- [ER Models](docs/spec/3_Architecture & Design/2_Data Model+ERD/er-models)
-- [API Contracts](docs/spec/3_Architecture & Design/3_API Contract & Versioning Policy)
+- [ADR‑0001 System Architecture](3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md)
+- [ER Models](3_Architecture & Design/2_Data Model+ERD/er-models)
+- [API Contracts](3_Architecture & Design/3_API Contract & Versioning Policy)
 
 ### Planning & Risk
-- [Roadmap](docs/spec/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md)
-- [Risk Register](docs/spec/4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md)
+- [Roadmap](4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md)
+- [Risk Register](4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md)
 
 ### Quality & Ops
-- [Test Strategy](docs/spec/5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md)
-- [Style Guide](docs/spec/5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md)
-- [CI/CD Blueprint](docs/spec/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md)
-- [Deployment Runbook](docs/spec/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md)
+- [Test Strategy](5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md)
+- [Style Guide](5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md)
+- [CI/CD Blueprint](5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md)
+- [Deployment Runbook](5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md)
 
 ### Dev Env & Collaboration
-- [Communication Plan](docs/spec/6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md)
+- [Communication Plan](6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md)
 
 ### Governance & Compliance
-- [Third-Party Inventory](docs/spec/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
-- [Threat Model](docs/spec/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md)
+- [Third-Party Inventory](7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
+- [Threat Model](7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md)
 
 ---
 
