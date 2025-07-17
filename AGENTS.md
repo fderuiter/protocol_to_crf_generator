@@ -24,7 +24,7 @@ A Python 3.11 tool converting clinical study protocols into CDISC-compliant CRF 
 
 # Pull-Request Guidelines
 - Branch names: feat/<desc>, docs/<topic>, release/vX.Y.Z, hotfix/vX.Y.Z, chore/ct-update-<date>
-- Commits follow Conventional Commits
+- Commits follow Conventional Commits and include the task id in square brackets per `[<id>] <title>`
 - PRs target `main`, squash merged after passing CI and one approval
 - Include summary & testing sections describing `pre-commit` and `pytest` commands
 - CLA must be signed for external contributors
@@ -32,5 +32,10 @@ A Python 3.11 tool converting clinical study protocols into CDISC-compliant CRF 
 # Programmatic Checks
 - `pre-commit run --all-files`
 - `pytest -n auto --cov --cov-fail-under=90`
+# Task Completion Guidelines
+- Tasks are defined in `TASKS.md` between `<!-- task:start -->` and `<!-- task:end -->`.
+- Modify files listed under each task's `path` and add tests from `tests`.
+- Follow the `instructions` section and ensure all `acceptance` criteria pass.
+- Set the task `status` to DONE when completed.
 
 - This file governs this directory tree; nested AGENTS.md override; direct system prompts override all.
