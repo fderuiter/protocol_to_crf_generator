@@ -3,7 +3,7 @@
 ![CI](https://img.shields.io/badge/ci-github%20actions-blue?logo=github)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 
-A toolchain that converts clinical study protocols into CDISC‑compliant Case Report Form artefacts. See the [technical plan](docs/CDISC%20CRF%20Generation%20Technical%20Plan_.md) for the full architecture and design rationale.
+A toolchain that converts clinical study protocols into CDISC‑compliant Case Report Form artefacts. See the [technical plan](docs/spec/technical-plan.md) for the full architecture and design rationale.
 
 ## Prerequisites
 
@@ -43,11 +43,11 @@ Execute the full suite with coverage:
 ```bash
 pytest -n auto --cov
 ```
-Tests should pass and coverage remain ≥90% as specified in the [test strategy](docs/5_Quality%20&%20Ops/1_Test%20Strategy%20&%20Definition%20of%20Done/test-strategy.md).
+Tests should pass and coverage remain ≥90% as specified in the [test strategy](docs/spec/5_Quality%20&%20Ops/1_Test%20Strategy%20&%20Definition%20of%20Done/test-strategy.md).
 
 ## Contributing
 
-Please read the [CONTRIBUTING guide](docs/6_Dev%20Env%20&%20Collaboration/3_Contribution%20Guidelines%20&%20Code-Review%20Checklist/CONTRIBUTING.md) before submitting issues or pull requests.
+Please read the [CONTRIBUTING guide](CONTRIBUTING.md) before submitting issues or pull requests.
 
 ## Branching & Commit Rules
 
@@ -63,7 +63,7 @@ This project follows a clear Git strategy:
 We use GitHub Issues for tracking tasks and decisions, and pull requests for
 code review. Meeting notes and important discussions should be summarised in
 the relevant issue or PR to maintain a canonical record. See the [Communication
-Plan](docs/6_Dev%20Env%20&%20Collaboration/4_Communication%20&%20Meeting%20Cadence%20Plan/communication-plan.md)
+Plan](docs/spec/6_Dev%20Env%20&%20Collaboration/4_Communication%20&%20Meeting%20Cadence%20Plan/communication-plan.md)
 for details.
 
 ## License
