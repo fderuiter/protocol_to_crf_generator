@@ -4,7 +4,7 @@ import subprocess
 
 def main() -> int:
     roots = [Path("."), Path("docs")]  # scan root markdown and top-level docs
-    files = []
+    files: list[str] = []
     for root in roots:
         if root.exists():
             files.extend(str(p) for p in root.glob("*.md"))
