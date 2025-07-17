@@ -19,3 +19,7 @@ nav:
   - Technical Plan: spec/technical-plan.md
   - Design: spec/design.md
   - Requirements: spec/requirements.md
+  - Prompt Templates:
+      - Unified Cleansing: prompt_templates/unified_data_cleansing.md
+      - Governance Gap Analysis: prompt_templates/regulatory_gap_analysis.md
+      - Architecture Blueprint: prompt_templates/future_proof_architecture_blueprint.md
