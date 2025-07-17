@@ -156,8 +156,14 @@ Rollout follows the quarterly roadmap: foundation in Q1 (CI/CD, core NLP, CLI), 
 
 ### Architecture & Design
 - [ADR‑0001 System Architecture](3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md)
-- [ER Models](3_Architecture & Design/2_Data Model+ERD/er-models)
-- [API Contracts](3_Architecture & Design/3_API Contract & Versioning Policy)
+- [Adverse Events (AE) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-AE.md)
+- [Concomitant Medications (CM) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-CM.md)
+- [Demographics (DM) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DM.md)
+- [Disposition (DS) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DS.md)
+- [Exposure (EX) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-EX.md)
+- [Medical History (MH) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-MH.md)
+- [Vital Signs (VS) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-VS.md)
+- [API Contracts](3_Architecture & Design/3_API Contract & Versioning Policy/index.md)
 
 ### Planning & Risk
 - [Roadmap](4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md)

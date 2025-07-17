@@ -3,7 +3,7 @@
 ## Table of Contents
 
 <!--AUTO-TOC-START-->
-* [Protocol to CRF Generator – Project Charter](1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
+* [Protocol to CRF Generator – Project Charter](../spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md)
   * Purpose & Vision
   * Business Objectives (SMART)
   * Scope
@@ -15,9 +15,9 @@
   * Stakeholders & Roles (RACI)
   * Budget / Resourcing Snapshot
   * Approval & Revision History
-* [Stakeholder Register – Protocol to CRF Generator](1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md)
+* [Stakeholder Register – Protocol to CRF Generator](../spec/1_Vision & Scope/Stakeholder & RACI list/stakeholders-raci.md)
   * Escalation Paths
-* [Functional Specification – Protocol Ingestion & Information Extraction](2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
+* [Functional Specification – Protocol Ingestion & Information Extraction](../spec/2_Requirements/1_Functional Spec or User-Story Backlog/functional_spec_protocol_ingestion.md)
   * 📑 Table of Contents
   * Glossary<a name="glossary"></a>
   * User Stories<a name="user-stories"></a>
@@ -28,7 +28,7 @@
     * Epic PI‑05 – Operational Logging & Error Handling<a name="epic-ops"></a>
   * Non‑Functional Notes<a name="nfr"></a>
   * Open Questions & Dependencies<a name="open-questions"></a>
-* [Feature List](2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
+* [Feature List](../spec/2_Requirements/1_Functional Spec or User-Story Backlog/z_feature_list.md)
   * 1. Deliverable & Access Interfaces
   * 2. Day-1 CDISC Standards Support
   * 3. Protocol Input Importers
@@ -44,7 +44,7 @@
   * 13. Packaging & Deployment Options
   * 14. Documentation & Onboarding
   * 15. Governance, Compliance & Community
-* [Non‑Functional Requirements Checklist – CRF Generator](2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
+* [Non‑Functional Requirements Checklist – CRF Generator](../spec/2_Requirements/2_Non-Functional Requirements (NFR) Sheet/nfr_checklist.md)
   * Performance
   * Scalability
   * Availability
@@ -55,7 +55,7 @@
   * Internationalization
   * Maintainability
     * Verification Methods
-* [ADR 0001: Choosing System Architecture for **Protocol to CRF Generator**](3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md)
+* [ADR 0001: Choosing System Architecture for **Protocol to CRF Generator**](../spec/3_Architecture & Design/1_High-Level Architecture Diagram & ADRs/adr-0001-system-architecture.md)
   * Status
   * Date
   * Context
@@ -67,90 +67,90 @@
   * Consequences
   * Architectural Views
   * Links
-* [Adverse Events (AE) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-AE.md)
+* [Adverse Events (AE) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-AE.md)
   * Overview
   * Entities
   * PlantUML
-* [Concomitant Medications (CM) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-CM.md)
+* [Concomitant Medications (CM) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-CM.md)
   * Overview
   * Entities
   * PlantUML
-* [Demographics (DM) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DM.md)
+* [Demographics (DM) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DM.md)
   * Overview
   * Entities
   * PlantUML
-* [Disposition (DS) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DS.md)
+* [Disposition (DS) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-DS.md)
   * Overview
   * Entities
   * PlantUML
-* [Exposure (EX) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-EX.md)
+* [Exposure (EX) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-EX.md)
   * Overview
   * Entities
   * PlantUML
-* [Medical History (MH) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-MH.md)
+* [Medical History (MH) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-MH.md)
   * Overview
   * Entities
   * PlantUML
-* [Vital Signs (VS) ER Model](3_Architecture & Design/2_Data Model+ERD/er-models/er-model-VS.md)
+* [Vital Signs (VS) ER Model](../spec/3_Architecture & Design/2_Data Model+ERD/er-models/er-model-VS.md)
   * Overview
   * Entities
   * PlantUML
-* [API Contract – CLI Wrapper](3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-cli-wrapper.md)
+* [API Contract – CLI Wrapper](../spec/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-cli-wrapper.md)
   * OpenAPI 3.1 Stub
   * Versioning & Deprecation Timeline
-* [API Contract – FastAPI Gateway](3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-fastapi-gateway.md)
+* [API Contract – FastAPI Gateway](../spec/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-fastapi-gateway.md)
   * OpenAPI 3.1 Stub
   * Versioning & Deprecation Timeline
-* [API Contract – Mapping Generation Service](3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-mapping-generation.md)
+* [API Contract – Mapping Generation Service](../spec/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-mapping-generation.md)
   * OpenAPI 3.1 Stub
   * Versioning & Deprecation Timeline
-* [API Contract – NLP Extraction Service](3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-nlp-extraction.md)
+* [API Contract – NLP Extraction Service](../spec/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-nlp-extraction.md)
   * OpenAPI 3.1 Stub
   * Versioning & Deprecation Timeline
-* [API Contract – Validation Service](3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-validation.md)
+* [API Contract – Validation Service](../spec/3_Architecture & Design/3_API Contract & Versioning Policy/api-contract-validation.md)
   * OpenAPI 3.1 Stub
   * Versioning & Deprecation Timeline
-* [12-Month Roadmap and Milestone Plan](4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md)
-* [Risk Register & Mitigation Plan](4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md)
+* [12-Month Roadmap and Milestone Plan](../spec/4_Planning & Risk/1_Roadmap/roadmap-next-12-months.md)
+* [Risk Register & Mitigation Plan](../spec/4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md)
   * Heat‑Map Summary
-* [Test Strategy & Definition of Done](5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md)
+* [Test Strategy & Definition of Done](../spec/5_Quality & Ops/1_Test Strategy & Definition of Done/test-strategy.md)
   * Objectives & Scope
   * Testing Pyramid Targets
   * Tooling & Environments
   * Non-Functional Testing
   * Defect Severity Definitions
   * Definition of Done Checklist
-* [Python Coding Standards & Style Guide](5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md)
+* [Python Coding Standards & Style Guide](../spec/5_Quality & Ops/2_Coding Standards + Style Guide/style-guide-python.md)
   * Formatting & Linting
   * Naming Conventions
   * Error Handling
   * Docstrings
   * Module Layout
   * Pre-commit Configuration
-* [CI/CD Pipeline Blueprint](5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md)
+* [CI/CD Pipeline Blueprint](../spec/5_Quality & Ops/3_CICD Pipeline Blueprint/cicd-blueprint.md)
   * Workflow Triggers
   * Job Sequence
   * Artefact Handling & Notifications
   * Mermaid Flowchart
-* [Deployment & Rollback Runbook](5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md)
+* [Deployment & Rollback Runbook](../spec/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md)
   * Preconditions
   * Deployment Steps
   * Health Checks
   * Rollback Procedure
   * Contact Matrix
-* [Communication & Meeting Cadence Plan](6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md)
+* [Communication & Meeting Cadence Plan](../spec/6_Dev Env & Collaboration/4_Communication & Meeting Cadence Plan/communication-plan.md)
   * Communication Channels
   * Ceremonies
   * Async Updates & Decision Logging
-* [License & Third-Party Software Inventory](7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
+* [License & Third-Party Software Inventory](../spec/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md)
   * SPDX Compliance
-* [Security & Privacy Threat Model](7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md)
+* [Security & Privacy Threat Model](../spec/7_Governance & Compliance/2_Security & Privacy Threat Model/threat-model.md)
   * System Overview
   * Data Flow
   * STRIDE Threat Enumeration
   * Mitigation Summary
   * Residual Risk Rating
-* [Technical Plan](technical-plan.md)
+* [Technical Plan](../spec/technical-plan.md)
   * **Executive Summary**
   * **Section 1: Foundational Framework and Project Scope**
     * **1.1. Deliverable Format and Target User Personas**
