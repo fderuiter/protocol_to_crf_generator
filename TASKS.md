@@ -590,4 +590,716 @@ instructions: |
 <!-- task:end -->
 
 
+<!-- task:start -->
+id: 2025-07-17-013
+phase: M2
+title: "Create Locust load-test suite"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-005
+  - 2025-07-17-010
+path:
+  - tests/performance/locustfile.py
+  - tests/performance/README.md
+tests: []
+acceptance:
+  - "Locust script simulates 500 users hitting /ingest"
+  - "Median pipeline time ≤5 min; P95 ≤7 min on reference node"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  NFR checklist mandates Locust load tests to validate pipeline throughput and latency targets.
+instructions: |
+  - Add `tests/performance/locustfile.py` generating POST requests to `/ingest`.
+  - Document running `locust -f locustfile.py` in `tests/performance/README.md`.
+  - Ensure results capture median and P95 timings for comparison.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-014
+phase: M2
+title: "Cache controlled terminology lookups"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-005
+path:
+  - protocol_to_crf_generator/ct_cache.py
+  - tests/test_ct_cache.py
+tests:
+  - tests/test_ct_cache.py
+acceptance:
+  - "Lookup cache reduces repeated DB queries by ≥90%"
+  - "Memory footprint ≤1 GB steady state"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Performance NFRs require efficient terminology access. A local cache will minimise database I/O.
+instructions: |
+  - Implement an in-memory LRU cache in `ct_cache.py`.
+  - Integrate it with terminology lookups in the mapping service.
+  - Write tests measuring cache hit rate with repeated queries.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-015
+phase: M2
+title: "Add API rate limiting middleware"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-005
+path:
+  - protocol_to_crf_generator/api/rate_limit.py
+  - tests/test_rate_limit.py
+tests:
+  - tests/test_rate_limit.py
+acceptance:
+  - "Excessive requests return HTTP 429"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The threat model lists denial-of-service as a risk. Rate limiting mitigates abusive traffic.
+instructions: |
+  - Use `slowapi` or equivalent middleware to enforce per-IP request limits.
+  - Configure limits in `api/main.py` and document override variables.
+  - Provide tests triggering the limit with repeated calls.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-016
+phase: M2
+title: "Integrate OWASP ZAP scan in CI"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-007
+path: .github/workflows/zap_scan.yml
+tests: []
+acceptance:
+  - "ZAP workflow reports 0 high-risk findings"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Weekly OWASP ZAP scans are part of the NFR security checklist.
+instructions: |
+  - Add `zap_scan.yml` executing ZAP against the staging URL.
+  - Fail the job on any high or critical alerts.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-017
+phase: M2
+title: "Implement secrets rotation utility"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-010
+path:
+  - scripts/rotate_secrets.py
+  - docs/ops/rotate-secrets.md
+tests: []
+acceptance:
+  - "Rotation script replaces API and DB secrets without downtime"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Rotating credentials regularly reduces the impact of secret leaks per the security NFRs.
+instructions: |
+  - Create `rotate_secrets.py` that generates new tokens and updates the deployment environment.
+  - Document the procedure in `docs/ops/rotate-secrets.md`.
+  - Schedule rotation via CI or cron as appropriate.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-018
+phase: M2
+title: "Enforce TLS and non-root containers"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-010
+  - 2025-07-17-005
+path:
+  - Dockerfile
+  - deploy/docker-compose.yml
+tests: []
+acceptance:
+  - "Qualys scan grade A+ with no weak ciphers"
+  - "Containers run as non-root user"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  NFR security requirements call for TLS1.2+ and container hardening. The threat model notes container escape risks.
+instructions: |
+  - Update `Dockerfile` to drop privileges and expose the service via HTTPS only.
+  - Configure `docker-compose.yml` with mounted certificates and a non-root UID.
+  - Document certificate generation and mounting steps.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-019
+phase: M2
+title: "Add RBAC authentication via external IdP"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-005
+path:
+  - protocol_to_crf_generator/api/security.py
+  - tests/test_rbac.py
+tests:
+  - tests/test_rbac.py
+acceptance:
+  - "Privileged endpoints require valid access token"
+  - "≥95% unit-test coverage on auth checks"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  RBAC with an external identity provider mitigates data-leakage risk R6 and satisfies the NFR security requirement.
+instructions: |
+  - Implement OAuth2 bearer authentication in `security.py`.
+  - Protect `/ingest`, `/map` and `/validate` with role checks.
+  - Provide tests using FastAPI TestClient and mocked token verification.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-020
+phase: M2
+title: "Ensure structured logging with correlation IDs"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-006
+path:
+  - protocol_to_crf_generator/audit/logging.py
+  - tests/test_logging.py
+tests:
+  - tests/test_logging.py
+acceptance:
+  - "100% API calls emit JSON logs with trace_id"
+  - "Ingestion→generation trace coverage ≥95%"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Observability NFRs specify structured JSON logging with correlation IDs across all services.
+instructions: |
+  - Extend `logging.py` to inject a `trace_id` into every log record.
+  - Propagate the ID through API requests and background tasks.
+  - Add tests verifying presence of `trace_id` fields.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-021
+phase: M2
+title: "Expose Prometheus metrics and alert rules"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-005
+  - 2025-07-16-007
+path:
+  - protocol_to_crf_generator/metrics.py
+  - tests/test_metrics.py
+  - deploy/prometheus-alerts.yml
+tests:
+  - tests/test_metrics.py
+acceptance:
+  - "Metrics endpoint exports RED and 4 golden signals"
+  - "Alert fires when 99th-latency >3s for >10 min"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The NFR checklist requires Prometheus metrics with latency SLO alerts monitored by Grafana/PagerDuty.
+instructions: |
+  - Implement counters and histograms in `metrics.py` and mount at `/metrics`.
+  - Provide `deploy/prometheus-alerts.yml` defining the latency alert rule.
+  - Add tests asserting metrics are emitted during sample requests.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-022
+phase: M2
+title: "Add readiness and liveness probes"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-005
+path:
+  - protocol_to_crf_generator/api/health.py
+  - tests/test_health.py
+tests:
+  - tests/test_health.py
+acceptance:
+  - "GET /healthz returns 200 for liveness"
+  - "GET /ready returns 200 when dependencies reachable"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Health probes allow Kubernetes to restart unhealthy pods and are part of the availability NFRs.
+instructions: |
+  - Add `/healthz` and `/ready` routes in `health.py`.
+  - Implement dependency checks for the readiness endpoint.
+  - Create tests verifying HTTP 200 responses and failure cases.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-023
+phase: M2
+title: "Generate consolidated validation log"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-008
+path:
+  - protocol_to_crf_generator/validation/report.py
+  - tests/test_validation_report.py
+tests:
+  - tests/test_validation_report.py
+acceptance:
+  - "Validation log JSON schema validates for sample jobs"
+  - "Human-readable summary generated alongside JSON"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The NFR checklist requires a consolidated validation log for every job.
+instructions: |
+  - Create `report.py` producing both JSON and Markdown validation summaries.
+  - Validate the JSON format against a schema in tests.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-024
+phase: M2
+title: "Provision staging environment configuration"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-010
+path:
+  - deploy/docker-compose.staging.yml
+  - docs/ops/staging-setup.md
+tests: []
+acceptance:
+  - "Staging stack starts via docker-compose.staging.yml"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  A dedicated staging environment enables blue/green testing before production rollout.
+instructions: |
+  - Create `docker-compose.staging.yml` mirroring production services.
+  - Document setup steps in `docs/ops/staging-setup.md`.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-025
+phase: M2
+title: "Implement blue/green deployment workflow"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-024
+  - 2025-07-16-007
+path: .github/workflows/deploy-bluegreen.yml
+tests: []
+acceptance:
+  - "Workflow deploys new container alongside old and switches after health pass"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Staged-release procedures reduce downtime and support quick rollback as described in the runbook.
+instructions: |
+  - Define `deploy-bluegreen.yml` using two services `blue` and `green`.
+  - Switch traffic after `/ready` returns success for the new version.
+  - Reuse the runbook steps for pulling images and running migrations.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-026
+phase: M2
+title: "Run smoke tests after deployment"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-025
+path:
+  - tests/smoke/test_smoke.py
+  - .github/workflows/deploy-bluegreen.yml
+  - docs/ops/staging-setup.md
+tests:
+  - tests/smoke/test_smoke.py
+acceptance:
+  - "Smoke tests verify /healthz and /validate on deployed build"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The deployment runbook lists health checks to confirm a successful rollout.
+instructions: |
+  - Add `test_smoke.py` exercising key endpoints against the staging deployment.
+  - Invoke the smoke tests in `deploy-bluegreen.yml` before switching traffic.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-027
+phase: M2
+title: "Add performance and security gates to CI"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-007
+  - 2025-07-17-013
+  - 2025-07-17-016
+path: .github/workflows/ci.yml
+tests: []
+acceptance:
+  - "CI fails if load test latency or ZAP scan exceed thresholds"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The CI/CD blueprint calls for perf and security gates before packaging.
+instructions: |
+  - Update `ci.yml` to run Locust and ZAP jobs after unit tests.
+  - Fail the workflow if thresholds are not met.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-028
+phase: M2
+title: "Implement artifact versioning"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-16-007
+path:
+  - pyproject.toml
+  - .github/workflows/ci.yml
+tests: []
+acceptance:
+  - "Docker images and wheels tagged with semver and git SHA"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Versioned artefacts support reproducible deployments and validation evidence.
+instructions: |
+  - Update `pyproject.toml` to read the version from git tags.
+  - Append the git SHA to Docker image tags in `ci.yml`.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-029
+phase: M2
+title: "Enable shadow writes for database migrations"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-004
+path:
+  - protocol_to_crf_generator/persistence/shadow.py
+  - tests/test_shadow.py
+tests:
+  - tests/test_shadow.py
+acceptance:
+  - "Shadow tables receive writes in parallel during migration"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Data migration safety requires shadow writes before switching schemas.
+instructions: |
+  - Implement a wrapper in `shadow.py` duplicating writes to new tables.
+  - Provide tests ensuring data consistency between live and shadow tables.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-030
+phase: M2
+title: "Provide automated rollback script"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-029
+path:
+  - scripts/rollback.sh
+  - docs/ops/rollback-guide.md
+tests: []
+acceptance:
+  - "Rollback script restores previous container and DB version"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The runbook specifies commands for pulling prior images and database downgrade.
+instructions: |
+  - Implement `scripts/rollback.sh` automating the runbook steps:
+    `docker pull`, `docker-compose down`, `alembic downgrade -1`.
+  - Document usage in `docs/ops/rollback-guide.md`.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-031
+phase: M2
+title: "Add NLP regression corpus accuracy tests"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-003
+path:
+  - tests/regression/test_extraction_accuracy.py
+  - data/regression_corpus/
+tests:
+  - tests/regression/test_extraction_accuracy.py
+acceptance:
+  - "Extraction accuracy ≥90% across regression corpus"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Risk R2 identifies incorrect NLP extraction as a critical issue; automated accuracy tests mitigate drift.
+instructions: |
+  - Assemble sample protocols under `data/regression_corpus/`.
+  - Implement tests comparing extracted entities to golden outputs.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-032
+phase: M2
+title: "Nightly audit log hash-chain verification"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-006
+path:
+  - .github/workflows/audit-chain.yml
+  - protocol_to_crf_generator/audit/hash_check.py
+tests: []
+acceptance:
+  - "Workflow fails if audit chain verification detects tampering"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Risk R1 requires immutable audit logs validated nightly via SHA-256 chain verification.
+instructions: |
+  - Implement `hash_check.py` computing and verifying the hash chain of audit entries.
+  - Schedule a nightly GitHub Actions workflow `audit-chain.yml` to run the check.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-033
+phase: M2
+title: "Regression test for CT updates"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-007
+path:
+  - .github/workflows/ct-update-test.yml
+  - tests/test_ct_update_regression.py
+tests:
+  - tests/test_ct_update_regression.py
+acceptance:
+  - "CT update workflow runs mapping regression tests automatically"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Risk R3 notes terminology updates may break mappings; automated regression protects against this.
+instructions: |
+  - Create workflow `ct-update-test.yml` triggered weekly and on CT PRs.
+  - Add tests ensuring mapping results remain stable after updates.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-034
+phase: M2
+title: "Schedule weekly Bandit and Semgrep scans"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-16-007
+path: .github/workflows/sast.yml
+tests: []
+acceptance:
+  - "Weekly SAST workflow reports zero high severity findings"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Risk R4 highlights vulnerabilities in dependencies; scheduled scans ensure early detection.
+instructions: |
+  - Configure `sast.yml` to run Bandit and Semgrep on a weekly schedule.
+  - Fail the job if any high severity issues are found.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-035
+phase: M2
+title: "Encrypt protocol documents at rest"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-004
+path:
+  - protocol_to_crf_generator/persistence/encrypt.py
+  - tests/test_encrypt.py
+tests:
+  - tests/test_encrypt.py
+acceptance:
+  - "Stored documents encrypted with AES-256"
+  - "Decryption yields original bytes"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Risk R6 and the security NFR require encryption at rest to prevent data leakage.
+instructions: |
+  - Implement helper functions in `encrypt.py` for AES-256 encryption using `cryptography`.
+  - Update storage logic to encrypt protocol files before saving.
+  - Provide tests confirming round-trip encryption and decryption.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-036
+phase: M2
+title: "Update documentation for Beta release"
+status: TODO
+priority: P2
+owner: ai
+depends_on:
+  - 2025-07-17-025
+path:
+  - README.md
+  - docs/spec/5_Quality & Ops/4_Deployment & Rollback Runbook/runbook-deploy-rollback.md
+  - docs/adr/README.md
+tests: []
+acceptance:
+  - "README reflects staging and blue/green workflows"
+  - "Runbook updated with smoke test steps"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Documentation must advertise the Public Beta capabilities and deployment procedures.
+instructions: |
+  - Revise the README with instructions for staging, blue/green deploy and metrics endpoints.
+  - Update the runbook to include smoke test and rollback script references.
+  - Add an ADR index entry noting the project has entered Beta.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-17-037
+phase: M2
+title: "Document disaster recovery plan and failover test"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-024
+path:
+  - docs/ops/disaster-recovery.md
+  - tests/test_failover.py
+tests:
+  - tests/test_failover.py
+acceptance:
+  - "Failover exercise restores service within RTO ≤4h and RPO ≤15min"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Availability NFRs specify disaster recovery objectives; a documented DR plan and test confirm readiness.
+instructions: |
+  - Create `disaster-recovery.md` detailing backup strategy and failover steps.
+  - Implement `test_failover.py` simulating a restore from snapshot.
+  - Include the exercise results in project records.
+<!-- task:end -->
 <!-- End of TASKS.md -->
