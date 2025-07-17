@@ -1,6 +1,9 @@
 # Protocol to CRF Generator
 
-![CI](https://img.shields.io/badge/ci-github%20actions-blue?logo=github)
+[![CI](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/main.yml/badge.svg)](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/main.yml)
+[![Docs](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/docs.yml/badge.svg)](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/docs.yml)
+[![CLA](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/cla.yml/badge.svg)](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/cla.yml)
+[![CT Update](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/ct-update.yml/badge.svg)](https://github.com/fderuiter/protocol_to_crf_generator/actions/workflows/ct-update.yml)
 ![License](https://img.shields.io/badge/license-Apache%202.0-blue)
 
 A toolchain that converts clinical study protocols into CDISC‑compliant Case Report Form artefacts. See the [technical plan](docs/spec/technical-plan.md) for the full architecture and design rationale.

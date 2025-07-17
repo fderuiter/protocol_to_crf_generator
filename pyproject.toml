@@ -3,3 +3,9 @@ line-length = 88
 
 [tool.mypy]
 strict = true
+
+[tool.pytest.ini_options]
+addopts = "--cov=protocol_to_crf_generator"
+
+[tool.coverage.run]
+source = ["protocol_to_crf_generator"]

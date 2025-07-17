@@ -36,7 +36,7 @@ jobs:
       - name: Install deps
         run: |
           pip install -r requirements.txt
-          pip install pytest-cov
+          pip install pytest-cov pytest-xdist
       - name: Pytest
         run: pytest -n auto --cov --cov-fail-under=90
 
