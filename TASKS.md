@@ -1302,4 +1302,277 @@ instructions: |
   - Implement `test_failover.py` simulating a restore from snapshot.
   - Include the exercise results in project records.
 <!-- task:end -->
+<!-- task:start -->
+id: 2025-07-18-001
+phase: M3
+title: "Execute production blue/green rollout"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-025
+  - 2025-07-17-026
+path:
+  - .github/workflows/release-prod.yml
+  - docs/ops/release-checklist.md
+  - deploy/docker-compose.yml
+  - tests/smoke/test_smoke.py
+tests:
+  - tests/smoke/test_smoke.py
+acceptance:
+  - "Production deployment completes without downtime"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The runbook instructs to pull the versioned image, stop existing containers, start new containers,
+  run migrations and verify health before switching traffic.
+instructions: |
+  - Create `release-prod.yml` triggered manually to promote the latest tagged image.
+  - Follow runbook steps: `docker pull`, `docker-compose down`, start with `VERSION` env and run `alembic upgrade head`.
+  - Invoke smoke tests before flipping the active service.
+  - Document the release checklist in `docs/ops/release-checklist.md`.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-002
+phase: M3
+title: "Set up Grafana dashboards and on-call rotation"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-021
+path:
+  - deploy/grafana-dashboard.json
+  - docs/ops/incident-playbook.md
+  - docs/ops/oncall-rota.md
+  - deploy/prometheus-alerts.yml
+tests: []
+acceptance:
+  - "SLO alert triggers when 99th-latency >3s for >10min"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Observability NFRs require Prometheus metrics with Grafana dashboards and PagerDuty alerts.
+  Incident playbooks describe steps for responders.
+instructions: |
+  - Define dashboards visualising RED metrics and latency SLOs in `grafana-dashboard.json`.
+  - Configure alert rules in `prometheus-alerts.yml` and link to PagerDuty.
+  - Document the on-call rota and step-by-step incident playbook.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-003
+phase: M3
+title: "Implement cross-region backups and restore drill"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-037
+path:
+  - scripts/backup.sh
+  - docs/ops/disaster-recovery.md
+  - tests/test_restore_drill.py
+tests:
+  - tests/test_restore_drill.py
+acceptance:
+  - "Restore from cross-region backup within RTO ≤4h and RPO ≤15min"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The technical plan's DRP states daily snapshots and quarterly failover exercises.
+  Backups must replicate to another region to guard against outage.
+instructions: |
+  - Write `backup.sh` performing daily snapshots and copying them to a secondary region.
+  - Extend `disaster-recovery.md` with cross-region restore steps.
+  - Add `test_restore_drill.py` simulating recovery from the backup location.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-004
+phase: M3
+title: "Generate SPDX SBOM and verify license inventory"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-16-002
+path:
+  - docs/spec/7_Governance & Compliance/1_License & Third-Party Software Inventory/third-party-inventory.md
+  - sbom/spdx_1.0.json
+tests: []
+acceptance:
+  - "SBOM exported with correct licenses for all dependencies"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  Inventory lists packages such as spaCy (MIT) and PlantUML (Apache-2.0). GA release requires
+  confirming compatibility and publishing an SPDX document.
+instructions: |
+  - Review `requirements.txt` against `third-party-inventory.md`; add any missing entries.
+  - Use `spdx-tools` to generate `sbom/spdx_1.0.json` during release builds.
+  - Store the SBOM artefact and link to it in the release notes.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-005
+phase: M3
+title: "Finalize pen-test fixes and compliance attestation"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-016
+  - 2025-07-17-017
+  - 2025-07-17-018
+path:
+  - docs/compliance/pen-test-report.md
+  - docs/compliance/compliance-attestation.md
+  - scripts/rotate_secrets.py
+tests: []
+acceptance:
+  - "All critical pen-test findings resolved and attestation signed"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The threat model mandates TLS, non-root containers and regular secret rotation.
+  Final penetration testing must confirm these controls before GA.
+instructions: |
+  - Address any remaining ZAP or Bandit issues and document fixes in `pen-test-report.md`.
+  - Obtain a signed compliance statement in `compliance-attestation.md`.
+  - Schedule quarterly execution of `rotate_secrets.py` via CI.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-006
+phase: M3
+title: "Tag v1.0.0 and publish changelog"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-028
+path:
+  - CHANGELOG.md
+  - docs/api/versioning.md
+tests: []
+acceptance:
+  - "Git tag v1.0.0 pushed and changelog announces GA on 2026-12-31"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  API contracts follow Semantic Versioning 2.0 with one minor release grace period for deprecated endpoints.
+  The GA tag marks the first stable release.
+instructions: |
+  - Add a `CHANGELOG.md` entry summarising features and deprecations.
+  - Tag the repository as `v1.0.0` and push to GitHub.
+  - Publish `docs/api/versioning.md` describing deprecation timelines and support policy.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-007
+phase: M3
+title: "Publish user guide and maintenance plan"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-17-036
+path:
+  - docs/user-guide.md
+  - docs/maintenance-plan.md
+  - README.md
+tests: []
+acceptance:
+  - "User guide explains CLI, API and Docker usage for GA"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  GA release requires comprehensive documentation and a post-release maintenance plan for
+  community contributors.
+instructions: |
+  - Compile step-by-step instructions in `user-guide.md` covering install and troubleshooting.
+  - Outline issue triage and release cadence in `maintenance-plan.md`.
+  - Update the README to reference these documents.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-008
+phase: M3
+title: "Operational readiness review and rollback rehearsal"
+status: TODO
+priority: P0
+owner: ai
+depends_on:
+  - 2025-07-17-030
+  - 2025-07-17-013
+path:
+  - docs/ops/release-checklist.md
+  - scripts/rollback.sh
+  - tests/performance/locustfile.py
+tests:
+  - tests/performance/locustfile.py
+acceptance:
+  - "Load-test report signed off and rollback executed successfully"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The runbook's rollback steps use `docker pull`, `docker-compose down` and `alembic downgrade -1`.
+  The CI load tests must pass before production traffic is switched.
+instructions: |
+  - Review Locust results against performance targets and sign off in `release-checklist.md`.
+  - Execute `scripts/rollback.sh` as a rehearsal and document the outcome.
+  - Capture any gaps in the checklist for future releases.
+<!-- task:end -->
+
+<!-- task:start -->
+id: 2025-07-18-009
+phase: M3
+title: "Close risk register and record residual risks"
+status: TODO
+priority: P1
+owner: ai
+depends_on:
+  - 2025-07-18-008
+path:
+  - docs/spec/4_Planning & Risk/2_Risk Register & Mitigation Plan/risk-register.md
+tests: []
+acceptance:
+  - "High and Medium risks updated with final mitigations and residual ratings"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  The register lists R1–R6 with exposures up to 16. Final mitigation status must be captured before GA.
+instructions: |
+  - Update the register noting which risks were mitigated or accepted.
+  - Document residual severity and link to supporting evidence.
+<!-- task:end -->
 <!-- End of TASKS.md -->
