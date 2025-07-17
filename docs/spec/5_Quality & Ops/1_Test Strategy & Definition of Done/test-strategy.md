@@ -1,6 +1,6 @@
 # Test Strategy & Definition of Done
 
-This strategy outlines how quality will be assured throughout development of the Protocol to CRF Generator. It is based on the approaches described in the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+This strategy outlines how quality will be assured throughout development of the Protocol to CRF Generator. It is based on the approaches described in the [CDISC CRF Generation Technical Plan](../../technical-plan.md).
 
 ## Objectives & Scope
 - Validate that all features work as specified and meet 21 CFR Part 11 compliance requirements.

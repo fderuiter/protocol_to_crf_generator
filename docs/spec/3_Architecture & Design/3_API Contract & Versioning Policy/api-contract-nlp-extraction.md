@@ -1,6 +1,6 @@
 # API Contract – NLP Extraction Service
 
-The NLP service extracts entities from protocol text. Contracts comply with the [Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md).
+The NLP service extracts entities from protocol text. Contracts comply with the [Technical Plan](../../technical-plan.md).
 
 ## OpenAPI 3.1 Stub
 ```yaml

@@ -1,6 +1,6 @@
 # Deployment & Rollback Runbook
 
-This runbook outlines the standard procedure for deploying the Protocol to CRF Generator and reverting to a previous release if necessary. It complements the CI/CD workflow described in the [technical plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md) and assumes Docker-based deployments managed via GitHub Actions.
+This runbook outlines the standard procedure for deploying the Protocol to CRF Generator and reverting to a previous release if necessary. It complements the CI/CD workflow described in the [technical plan](../../technical-plan.md) and assumes Docker-based deployments managed via GitHub Actions.
 
 ## Preconditions
 - A tagged release artifact is available in the container registry and on PyPI.

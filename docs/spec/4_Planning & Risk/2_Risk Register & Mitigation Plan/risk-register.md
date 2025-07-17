@@ -1,6 +1,6 @@
 # Risk Register & Mitigation Plan
 
-The following register tracks key project risks derived from the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md). Impact and Probability are scored from 1 (low) to 5 (high). Exposure is calculated as **Impact × Probability**. Severity icons are coded as:
+The following register tracks key project risks derived from the [CDISC CRF Generation Technical Plan](../../technical-plan.md). Impact and Probability are scored from 1 (low) to 5 (high). Exposure is calculated as **Impact × Probability**. Severity icons are coded as:
 
 - 🟥 Critical (16–25)
 - 🟧 High (10–15)

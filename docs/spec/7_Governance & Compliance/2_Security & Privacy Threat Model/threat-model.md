@@ -1,6 +1,6 @@
 # Security & Privacy Threat Model
 
-This document outlines potential security and privacy threats to the Protocol to CRF Generator using the **STRIDE** methodology. The analysis draws on controls described in the [technical plan](../CDISC%20CRF%20Generation%20Technical%20Plan_.md) such as CI-based static scanning and immutable audit logs.
+This document outlines potential security and privacy threats to the Protocol to CRF Generator using the **STRIDE** methodology. The analysis draws on controls described in the [technical plan](../../technical-plan.md) such as CI-based static scanning and immutable audit logs.
 
 ## System Overview
 

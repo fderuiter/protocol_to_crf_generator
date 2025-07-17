@@ -1,6 +1,6 @@
 # Communication & Meeting Cadence Plan
 
-This plan defines how collaboration occurs on the Protocol to CRF Generator project. It summarises practices referenced in the [CDISC CRF Generation Technical Plan](../../CDISC%20CRF%20Generation%20Technical%20Plan_.md) and complements the stakeholder RACI register.
+This plan defines how collaboration occurs on the Protocol to CRF Generator project. It summarises practices referenced in the [CDISC CRF Generation Technical Plan](../../technical-plan.md) and complements the stakeholder RACI register.
 
 ## Communication Channels
 
