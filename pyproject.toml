@@ -9,3 +9,7 @@ addopts = "--cov=protocol_to_crf_generator"
 
 [tool.coverage.run]
 source = ["protocol_to_crf_generator"]
+
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
