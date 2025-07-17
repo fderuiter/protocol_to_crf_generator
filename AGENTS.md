@@ -28,6 +28,7 @@ A Python 3.11 tool converting clinical study protocols into CDISC-compliant CRF 
 - PRs target `main`, squash merged after passing CI and one approval
 - Include summary & testing sections describing `pre-commit` and `pytest` commands
 - CLA must be signed for external contributors
+- Each commit message must include `I have read the CLA Document and I hereby sign the CLA`
 
 # Programmatic Checks
 - `pre-commit run --all-files`
