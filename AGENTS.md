@@ -39,4 +39,14 @@ A Python 3.11 tool converting clinical study protocols into CDISC-compliant CRF 
 - Follow the `instructions` section and ensure all `acceptance` criteria pass.
 - Set the task `status` to DONE when completed.
 
+## General Task Workflow
+1. Read the task's `context` and `instructions` carefully.
+2. Create a branch using the naming convention from *Pull-Request Guidelines*.
+3. Modify code and documentation for each file in the task's `path`.
+4. Add or update tests under `tests/` to cover the changes.
+5. Run `pre-commit run --all-files` and `pytest -n auto --cov --cov-fail-under=90`.
+6. Update `TASKS.md` marking the task as DONE.
+7. Commit using `[<id>] <title>` followed by `I have read the CLA Document and I hereby sign the CLA`.
+8. Push and open a pull request to `main` with summary and testing sections.
+
 - This file governs this directory tree; nested AGENTS.md override; direct system prompts override all.
