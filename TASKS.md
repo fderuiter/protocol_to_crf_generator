@@ -36,7 +36,7 @@ instructions: |
 id: 2025-07-16-002
 phase: M0
 title: "Seed project documentation and policies"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
