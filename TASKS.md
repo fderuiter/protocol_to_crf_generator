@@ -16,7 +16,7 @@ milestones:
 id: 2025-07-16-001
 phase: M0
 title: "Create GitHub repository and main branch"
-status: TODO
+status: DONE
 priority: P0
 owner: Frederick de Ruiter
 depends_on: []
