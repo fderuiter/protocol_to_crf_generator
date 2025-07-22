@@ -422,7 +422,7 @@ instructions: |
 id: 2025-07-17-007
 phase: M1
 title: "Add mapping service stub and /map endpoint"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
