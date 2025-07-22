@@ -513,7 +513,7 @@ instructions: |
 id: 2025-07-17-010
 phase: M1
 title: "Create Dockerfile for FastAPI service"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
