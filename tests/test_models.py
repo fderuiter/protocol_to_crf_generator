@@ -29,7 +29,7 @@ def test_study_protocol_ir_valid() -> None:
 
 def test_validation_error() -> None:
     with pytest.raises(ValidationError):
-        protocol.DataCollectionRequirement(
+        protocol.DataCollectionRequirement(  # type: ignore[call-arg]
             visit_name="Screening",
             assessment_name="ECG",
             provenance=protocol.Provenance(source_format="docx", source_identifier="prot.docx"),
@@ -40,5 +40,5 @@ def test_validation_error() -> None:
             protocol_id="P123",
             protocol_title="Example Study",
             version="1.0",
-            requirements=[{"not": "a requirement"}],
+            requirements=[{"not": "a requirement"}],  # type: ignore[list-item]
         )

@@ -263,7 +263,7 @@ instructions: |
 id: 2025-07-17-002
 phase: M1
 title: "Create DOCX importer with table extraction"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
