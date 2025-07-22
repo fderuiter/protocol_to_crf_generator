@@ -148,7 +148,7 @@ instructions: |
 id: 2025-07-16-007
 phase: M0
 title: "Set up GitHub Actions CI workflow"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
