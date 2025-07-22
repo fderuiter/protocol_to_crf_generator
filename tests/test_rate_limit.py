@@ -1,12 +1,13 @@
 from importlib import reload
 
 from fastapi.testclient import TestClient
+import pytest
 
 import protocol_to_crf_generator.api.main as main
 import protocol_to_crf_generator.api.rate_limit as rate_limit
 
 
-def test_rate_limit_exceeded(monkeypatch):
+def test_rate_limit_exceeded(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setenv("RATE_LIMIT", "2/minute")
     reload(rate_limit)
     reload(main)
