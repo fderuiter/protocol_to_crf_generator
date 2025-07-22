@@ -209,7 +209,7 @@ instructions: |
 id: 2025-07-16-010
 phase: M0
 title: "Add ADR folder with system architecture record"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
