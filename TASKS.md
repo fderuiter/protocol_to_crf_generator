@@ -482,7 +482,7 @@ instructions: |
 id: 2025-07-17-009
 phase: M1
 title: "Extend CLI with ingest command"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:

@@ -5,6 +5,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 from docx import Document
+import pytest  # type: ignore
 
 from protocol_to_crf_generator.api.main import app
 from protocol_to_crf_generator.persistence import storage
@@ -23,7 +24,7 @@ def test_health_endpoint() -> None:
     assert response.json() == {"status": "ok"}
 
 
-def test_ingest_endpoint(tmp_path: Path, monkeypatch) -> None:
+def test_ingest_endpoint(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     file_path = tmp_path / "sample.docx"
     _create_docx(file_path)
     content = base64.b64encode(file_path.read_bytes()).decode()
