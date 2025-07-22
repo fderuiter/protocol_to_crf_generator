@@ -1,6 +1,6 @@
-from __future__ import annotations
-
 """Rule-based NLP extraction using spaCy."""
+
+from __future__ import annotations
 
 from dataclasses import dataclass
 from typing import List, Optional
