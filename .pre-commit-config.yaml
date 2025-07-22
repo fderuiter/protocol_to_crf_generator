@@ -8,7 +8,7 @@ repos:
     hooks:
       - id: mypy
         args: ["--strict"]
-        additional_dependencies: ["pydantic", "spacy", "python-docx"]
+        additional_dependencies: ["pydantic", "spacy", "python-docx", "fastapi"]
   - repo: local
     hooks:
       - id: validate-markdown
