@@ -595,7 +595,7 @@ instructions: |
 id: 2025-07-17-013
 phase: M2
 title: "Create Locust load-test suite"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
