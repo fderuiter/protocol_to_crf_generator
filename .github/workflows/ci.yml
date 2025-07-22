@@ -36,4 +36,4 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
       - name: Pytest
-        run: pytest -n auto --cov --cov-fail-under=90
+        run: PYTHONPATH=$(pwd) pytest -n auto --cov --cov-fail-under=90
