@@ -1,7 +1,8 @@
 from pathlib import Path
 from types import SimpleNamespace
+from typing import Any, Dict
 
-import pytest
+import pytest  # type: ignore
 
 from protocol_to_crf_generator.__main__ import main
 
@@ -10,9 +11,9 @@ def test_cmd_ingest_posts(tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsy
     file_path = tmp_path / "sample.docx"
     file_path.write_text("dummy")
 
-    captured = {}
+    captured: Dict[str, Any] = {}
 
-    def fake_post(url: str, json: dict, timeout: int) -> SimpleNamespace:
+    def fake_post(url: str, json: Dict[str, Any], timeout: int) -> SimpleNamespace:
         captured["url"] = url
         captured["json"] = json
 

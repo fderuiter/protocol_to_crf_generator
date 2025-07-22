@@ -17,9 +17,11 @@ from protocol_to_crf_generator.models.protocol import (
     StudyProtocolIR,
 )
 from protocol_to_crf_generator.persistence import save_ir
+from protocol_to_crf_generator.audit import setup_audit_logger
 
 
 app = FastAPI(title="Protocol to CRF Generator")
+audit_logger = setup_audit_logger()
 
 
 class ProtocolInput(BaseModel):
@@ -40,9 +42,12 @@ class JobStatus(BaseModel):
 def ingest(input_data: ProtocolInput) -> JobStatus:
     """Ingest a protocol document synchronously."""
 
+    trace_id = str(uuid.uuid4())
+
     try:
-        binary = base64.b64decode(input_data.content)
+        binary = base64.b64decode(input_data.content, validate=True)
     except (BinasciiError, ValueError) as exc:  # pragma: no cover - invalid base64
+        audit_logger.error("Invalid content encoding", extra={"trace_id": trace_id})
         raise HTTPException(status_code=400, detail="Invalid content encoding") from exc
 
     with NamedTemporaryFile(suffix=Path(input_data.filename).suffix) as tmp:
@@ -71,7 +76,8 @@ def ingest(input_data: ProtocolInput) -> JobStatus:
     )
     save_ir(ir)
 
-    return JobStatus(job_id=str(uuid.uuid4()), state="accepted")
+    audit_logger.info("Ingestion completed", extra={"trace_id": trace_id})
+    return JobStatus(job_id=trace_id, state="accepted")
 
 
 @app.get("/health")
