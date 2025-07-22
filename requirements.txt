@@ -11,3 +11,4 @@ spacy
 fastapi
 fastapi[test]
 httpx
+locust
