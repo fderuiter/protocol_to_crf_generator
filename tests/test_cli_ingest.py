@@ -2,7 +2,7 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import Any, Dict
 
-import pytest  # type: ignore
+import pytest
 
 from protocol_to_crf_generator.__main__ import main
 
