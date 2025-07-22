@@ -1,3 +1,12 @@
 {
-   "signedContributors": []
+  "signedContributors": [
+    {
+      "name": "fderuiter",
+      "id": 127706008,
+      "comment_id": 3102600142,
+      "created_at": "2025-07-22T12:55:13Z",
+      "repoId": 1020189081,
+      "pullRequestNo": 71
+    }
+  ]
 }
