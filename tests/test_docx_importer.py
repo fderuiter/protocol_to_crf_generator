@@ -13,7 +13,7 @@ def _create_sample_docx(path: Path) -> None:
     table.rows[0].cells[1].text = "Header2"
     table.rows[1].cells[0].text = "Value1"
     table.rows[1].cells[1].text = "Value2"
-    doc.save(path)
+    doc.save(str(path))
 
 
 def test_load_docx(tmp_path: Path) -> None:
