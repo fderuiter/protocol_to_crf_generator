@@ -391,7 +391,7 @@ instructions: |
 id: 2025-07-17-006
 phase: M1
 title: "Record structured audit logs to SQLite"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
