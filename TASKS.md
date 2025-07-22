@@ -655,7 +655,7 @@ instructions: |
 id: 2025-07-17-015
 phase: M2
 title: "Add API rate limiting middleware"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
