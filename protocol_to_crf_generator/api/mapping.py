@@ -7,8 +7,22 @@ import uuid
 from fastapi import APIRouter
 from pydantic import BaseModel
 
+from protocol_to_crf_generator.ct_cache import CTCache
+
 
 router = APIRouter()
+
+
+TERMINOLOGY_DB = {"IR1": "Case Report Form"}
+
+
+def _fetch_term(code: str) -> str:
+    """Simulate a terminology lookup."""
+
+    return TERMINOLOGY_DB.get(code, "")
+
+
+_cache = CTCache(_fetch_term, maxsize=256)
 
 
 class MappingRequest(BaseModel):
@@ -27,6 +41,7 @@ class MappingResult(BaseModel):
 def map_ir(payload: MappingRequest) -> MappingResult:
     """Return a placeholder CRF identifier for the supplied IR."""
 
+    _cache.lookup(payload.ir_id)
     return MappingResult(crf_id=f"crf-{uuid.uuid4()}")
 
 
