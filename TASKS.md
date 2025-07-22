@@ -33,10 +33,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-002
-phase: M0
-title: "Seed project documentation and policies"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
@@ -60,10 +57,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-003
-phase: M0
-title: "Add Python package scaffolding"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
@@ -85,10 +79,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-004
-phase: M0
-title: "Create .gitignore for Python artifacts"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
@@ -104,10 +95,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-005
-phase: M0
-title: "Configure pre-commit with ruff and mypy"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
@@ -124,10 +112,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-006
-phase: M0
-title: "Add unit test placeholder"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
@@ -145,10 +130,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-007
-phase: M0
-title: "Set up GitHub Actions CI workflow"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
@@ -167,10 +149,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-008
-phase: M0
-title: "Add pull request template"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
@@ -186,10 +165,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-009
-phase: M0
-title: "Enable Dependabot for dependencies"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
@@ -206,10 +182,7 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
-id: 2025-07-16-010
-phase: M0
-title: "Add ADR folder with system architecture record"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
