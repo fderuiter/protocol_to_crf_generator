@@ -170,7 +170,7 @@ instructions: |
 id: 2025-07-16-008
 phase: M0
 title: "Add pull request template"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
