@@ -107,7 +107,7 @@ instructions: |
 id: 2025-07-16-005
 phase: M0
 title: "Configure pre-commit with ruff and mypy"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:

@@ -33,6 +33,9 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
    pre-commit install
    ```
 
+   Running `pre-commit install` enables automatic formatting and type checks
+   before each commit.
+
 3. Run the CLI
 
    ```bash
