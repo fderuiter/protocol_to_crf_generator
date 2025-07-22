@@ -684,7 +684,7 @@ instructions: |
 id: 2025-07-17-016
 phase: M2
 title: "Integrate OWASP ZAP scan in CI"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
