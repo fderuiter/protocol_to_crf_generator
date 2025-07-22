@@ -567,7 +567,7 @@ instructions: |
 id: 2025-07-17-012
 phase: M1
 title: "Update README with API and Docker usage"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
