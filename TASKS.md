@@ -63,7 +63,7 @@ instructions: |
 id: 2025-07-16-003
 phase: M0
 title: "Add Python package scaffolding"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
