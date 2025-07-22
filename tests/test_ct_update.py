@@ -1,5 +1,5 @@
 from pathlib import Path
-import pytest  # type: ignore
+import pytest
 
 from protocol_to_crf_generator import ct_update
 

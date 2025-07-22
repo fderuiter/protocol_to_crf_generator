@@ -2,7 +2,7 @@ import json
 import sqlite3
 from pathlib import Path
 
-import pytest  # type: ignore
+import pytest
 from fastapi.testclient import TestClient
 
 from protocol_to_crf_generator.api import main

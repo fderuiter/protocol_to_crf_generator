@@ -1,6 +1,6 @@
 from protocol_to_crf_generator.models import protocol
 from pydantic import ValidationError
-import pytest  # type: ignore
+import pytest
 
 
 def _requirement() -> protocol.DataCollectionRequirement:

@@ -8,5 +8,6 @@ pymarkdownlnt
 pydantic
 python-docx
 spacy
- fastapi[test]
+fastapi
+fastapi[test]
 httpx
