@@ -7,3 +7,4 @@ pytest-xdist
 pymarkdownlnt
 pydantic
 python-docx
+spacy

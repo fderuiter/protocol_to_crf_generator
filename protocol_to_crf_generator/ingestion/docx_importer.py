@@ -30,7 +30,7 @@ def load_docx(path: Path) -> tuple[str, list[str]]:
     if path.suffix.lower() != ".docx":
         raise ValueError("Unsupported file type")
 
-    doc = Document(path)
+    doc = Document(str(path))
     text = "\n".join(paragraph.text for paragraph in doc.paragraphs)
 
     tables: list[str] = []
