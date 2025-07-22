@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+from binascii import Error as BinasciiError
 import uuid
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -41,7 +42,7 @@ def ingest(input_data: ProtocolInput) -> JobStatus:
 
     try:
         binary = base64.b64decode(input_data.content)
-    except (base64.binascii.Error, ValueError) as exc:  # pragma: no cover - invalid base64
+    except (BinasciiError, ValueError) as exc:  # pragma: no cover - invalid base64
         raise HTTPException(status_code=400, detail="Invalid content encoding") from exc
 
     with NamedTemporaryFile(suffix=Path(input_data.filename).suffix) as tmp:
