@@ -5,7 +5,7 @@ from pathlib import Path
 
 from fastapi.testclient import TestClient
 from docx import Document
-import pytest  # type: ignore
+import pytest
 
 from protocol_to_crf_generator.api.main import app
 from protocol_to_crf_generator.persistence import storage
