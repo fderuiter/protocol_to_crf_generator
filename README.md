@@ -43,6 +43,33 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
    python -m protocol_to_crf_generator --help
    ```
 
+## Running via Docker
+
+Build and start the API service:
+
+```bash
+docker build -t protocol-to-crf .
+docker run -p 8000:8000 protocol-to-crf
+```
+
+Alternatively use Docker Compose which starts auxiliary services:
+
+```bash
+docker compose up --build
+```
+
+The API is then available at `http://localhost:8000`.
+
+## CLI ingest example
+
+With the API running, upload a protocol document:
+
+```bash
+python -m protocol_to_crf_generator ingest sample.docx
+```
+
+The command prints the job identifier returned by `/ingest`.
+
 ## Common Commands
 
 - `pre-commit run --all-files` – lint, type-check and scan for security issues
