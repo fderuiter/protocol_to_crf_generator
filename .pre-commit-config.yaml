@@ -9,10 +9,21 @@ repos:
       - id: mypy
         args: ["--strict"]
         additional_dependencies: ["pydantic", "spacy", "python-docx", "fastapi", "httpx"]
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.6
+    hooks:
+      - id: bandit
+        args: ["-r", "protocol_to_crf_generator", "-ll"]
+        pass_filenames: false
+  - repo: https://github.com/returntocorp/semgrep
+    rev: v1.128.0
+    hooks:
+      - id: semgrep-ci
   - repo: local
     hooks:
       - id: validate-markdown
         name: validate-markdown
         entry: python scripts/validate_markdown.py
         language: python
+        additional_dependencies: ["pymarkdownlnt"]
         types: [markdown]

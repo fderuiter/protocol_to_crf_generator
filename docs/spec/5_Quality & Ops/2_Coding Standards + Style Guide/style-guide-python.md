@@ -63,7 +63,16 @@ repos:
     hooks:
       - id: mypy
         args: ["--strict"]
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.6
+    hooks:
+      - id: bandit
+        args: ["-r", "protocol_to_crf_generator", "-ll"]
+  - repo: https://github.com/returntocorp/semgrep
+    rev: v1.128.0
+    hooks:
+      - id: semgrep-ci
 ```
 
-Running `pre-commit run --all-files` should succeed before opening a pull request.
+Running `pre-commit run --all-files` should succeed before opening a pull request. This command now also runs security scans with Bandit and Semgrep.
 

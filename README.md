@@ -33,8 +33,8 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
    pre-commit install
    ```
 
-   Running `pre-commit install` enables automatic formatting and type checks
-   before each commit.
+   Running `pre-commit install` enables automatic formatting, type and
+   security checks before each commit.
 
 3. Run the CLI
 
@@ -44,7 +44,7 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
 
 ## Common Commands
 
-- `pre-commit run --all-files` – format and type-check
+- `pre-commit run --all-files` – lint, type-check and scan for security issues
 - `pytest` – run tests
 - `docker compose up` – spin up auxiliary services
 
