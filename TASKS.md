@@ -359,7 +359,7 @@ instructions: |
 id: 2025-07-17-005
 phase: M1
 title: "Add FastAPI gateway with /ingest and /health endpoints"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
