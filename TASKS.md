@@ -327,7 +327,7 @@ instructions: |
 id: 2025-07-17-004
 phase: M1
 title: "Persist StudyProtocolIR JSON with hash manifest"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
