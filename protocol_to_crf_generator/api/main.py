@@ -19,11 +19,13 @@ from protocol_to_crf_generator.models.protocol import (
 from protocol_to_crf_generator.persistence import save_ir
 from protocol_to_crf_generator.audit import setup_audit_logger
 from protocol_to_crf_generator.api.mapping import router as mapping_router
+from protocol_to_crf_generator.api.validation import router as validation_router
 
 
 app = FastAPI(title="Protocol to CRF Generator")
 audit_logger = setup_audit_logger()
 app.include_router(mapping_router)
+app.include_router(validation_router)
 
 
 class ProtocolInput(BaseModel):
