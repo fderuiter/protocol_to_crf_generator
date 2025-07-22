@@ -452,7 +452,7 @@ instructions: |
 id: 2025-07-17-008
 phase: M1
 title: "Add validation service stub and /validate endpoint"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
