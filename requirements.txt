@@ -8,3 +8,5 @@ pymarkdownlnt
 pydantic
 python-docx
 spacy
+fastapi
+httpx
