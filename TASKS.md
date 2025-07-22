@@ -189,7 +189,7 @@ instructions: |
 id: 2025-07-16-009
 phase: M0
 title: "Enable Dependabot for dependencies"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
