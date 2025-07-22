@@ -230,7 +230,7 @@ instructions: |
 id: 2025-07-17-001
 phase: M1
 title: "Implement StudyProtocolIR Pydantic models"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
