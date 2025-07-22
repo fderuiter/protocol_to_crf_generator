@@ -625,7 +625,7 @@ instructions: |
 id: 2025-07-17-014
 phase: M2
 title: "Cache controlled terminology lookups"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
