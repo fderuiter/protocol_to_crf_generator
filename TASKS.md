@@ -88,7 +88,7 @@ instructions: |
 id: 2025-07-16-004
 phase: M0
 title: "Create .gitignore for Python artifacts"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
