@@ -540,7 +540,7 @@ instructions: |
 id: 2025-07-17-011
 phase: M1
 title: "Document canonical IR design in new ADR"
-status: TODO
+status: DONE
 priority: P2
 owner: ai
 depends_on:
