@@ -60,6 +60,16 @@ docker compose up --build
 
 The API is then available at `http://localhost:8000`.
 
+## Configuration
+
+The rate limiter defaults to `5/minute` per IP address. Override this by setting
+the environment variable `RATE_LIMIT` before starting the API:
+
+```bash
+export RATE_LIMIT=10/minute
+docker compose up --build
+```
+
 ## CLI ingest example
 
 With the API running, upload a protocol document:
