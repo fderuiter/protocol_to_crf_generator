@@ -44,6 +44,7 @@ path:
   - docs/github_models.md
   - docs/prototyping_with_ai_models.md
   - docs/evaluating_ai_models.md
+  - docs/storing_prompts.md
   - docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md
   - docs/index.md
   - mkdocs.yml
