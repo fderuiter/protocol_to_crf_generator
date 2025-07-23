@@ -21,6 +21,7 @@ from protocol_to_crf_generator.audit import setup_audit_logger
 from protocol_to_crf_generator.api.mapping import router as mapping_router
 from protocol_to_crf_generator.api.validation import router as validation_router
 from protocol_to_crf_generator.api.rate_limit import setup_rate_limiter
+from protocol_to_crf_generator.api.health import router as health_router
 
 
 app = FastAPI(title="Protocol to CRF Generator")
@@ -28,6 +29,7 @@ audit_logger = setup_audit_logger()
 setup_rate_limiter(app)
 app.include_router(mapping_router)
 app.include_router(validation_router)
+app.include_router(health_router)
 
 
 class ProtocolInput(BaseModel):
