@@ -709,7 +709,7 @@ instructions: |
 id: 2025-07-17-017
 phase: M2
 title: "Implement secrets rotation utility"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
