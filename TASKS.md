@@ -36,7 +36,7 @@ instructions: |
 id: 2025-07-19-026
 phase: M1
 title: "Document GitHub Models integration"
-status: TODO
+status: DONE
 priority: P3
 owner: ai
 depends_on: []
