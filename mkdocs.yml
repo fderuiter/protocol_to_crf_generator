@@ -20,3 +20,4 @@ nav:
   - Design: spec/design.md
   - Requirements: spec/requirements.md
   - GitHub Models: github_models.md
+  - Prototyping with AI Models: prototyping_with_ai_models.md

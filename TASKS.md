@@ -34,7 +34,7 @@ instructions: |
 
 <!-- task:start -->
 id: 2025-07-19-026
-phase: M4
+phase: M1
 title: "Document GitHub Models integration"
 status: TODO
 priority: P3
@@ -42,6 +42,7 @@ owner: ai
 depends_on: []
 path:
   - docs/github_models.md
+  - docs/prototyping_with_ai_models.md
   - docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md
   - docs/index.md
   - mkdocs.yml
