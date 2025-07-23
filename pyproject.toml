@@ -8,6 +8,10 @@ strict = true
 module = "locust.*"
 ignore_missing_imports = true
 
+[[tool.mypy.overrides]]
+module = "jsonschema.*"
+ignore_missing_imports = true
+
 [tool.pytest.ini_options]
 addopts = "--cov=protocol_to_crf_generator"
 
