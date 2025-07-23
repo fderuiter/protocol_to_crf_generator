@@ -19,3 +19,4 @@ nav:
   - Technical Plan: spec/technical-plan.md
   - Design: spec/design.md
   - Requirements: spec/requirements.md
+  - GitHub Models: github_models.md
