@@ -13,3 +13,4 @@ fastapi[test]
 httpx
 locust
 slowapi
+jsonschema

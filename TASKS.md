@@ -889,7 +889,7 @@ instructions: |
 id: 2025-07-17-023
 phase: M2
 title: "Generate consolidated validation log"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
