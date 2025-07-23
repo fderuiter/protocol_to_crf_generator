@@ -859,7 +859,7 @@ instructions: |
 id: 2025-07-17-022
 phase: M2
 title: "Add readiness and liveness probes"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
