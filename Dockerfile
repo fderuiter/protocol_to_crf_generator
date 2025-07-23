@@ -15,11 +15,17 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-ENV PATH="/root/.local/bin:$PATH"
+ENV PATH="/home/app/.local/bin:$PATH"
 
-COPY --from=builder /root/.local /root/.local
+RUN addgroup --system app && adduser --system --ingroup app --uid 1000 app
+
+COPY --from=builder /root/.local /home/app/.local
 COPY --from=builder /app /app
 
-EXPOSE 8000
+RUN chown -R app:app /app /home/app/.local
 
-CMD ["uvicorn", "protocol_to_crf_generator.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+USER app
+
+EXPOSE 8443
+
+CMD ["uvicorn", "protocol_to_crf_generator.api.main:app", "--host", "0.0.0.0", "--port", "8443", "--ssl-keyfile", "/certs/server.key", "--ssl-certfile", "/certs/server.crt"]

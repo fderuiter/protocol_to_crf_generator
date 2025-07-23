@@ -49,16 +49,22 @@ Build and start the API service:
 
 ```bash
 docker build -t protocol-to-crf .
-docker run -p 8000:8000 protocol-to-crf
+docker run -p 8443:8443 -v $(pwd)/deploy/certs:/certs:ro \
+  --user 1000:1000 protocol-to-crf \
+  uvicorn protocol_to_crf_generator.api.main:app \
+  --host 0.0.0.0 --port 8443 \
+  --ssl-keyfile /certs/server.key --ssl-certfile /certs/server.crt
 ```
+
+See [TLS Configuration](docs/ops/tls-setup.md) for generating the certificate bundle.
 
 Alternatively use Docker Compose which starts auxiliary services:
 
 ```bash
-docker compose up --build
+docker compose -f deploy/docker-compose.yml up --build
 ```
 
-The API is then available at `http://localhost:8000`.
+The API is then available at `https://localhost:8443`.
 
 ## Configuration
 
@@ -67,7 +73,7 @@ the environment variable `RATE_LIMIT` before starting the API:
 
 ```bash
 export RATE_LIMIT=10/minute
-docker compose up --build
+docker compose -f deploy/docker-compose.yml up --build
 ```
 
 ## CLI ingest example
