@@ -6,3 +6,4 @@ The full documentation set, including design specifications and requirements, is
 
 You can now explore our [GitHub Models overview](github_models.md) to understand how large language models are incorporated into the project. Learn more about [prototyping with AI models](prototyping_with_ai_models.md) to experiment with different options.
 For step-by-step guidance on refining prompts, read [Optimizing your AI-powered app with Models](optimizing_with_models.md).
+To learn how to test and score model outputs, see [Evaluating AI models](evaluating_ai_models.md).
