@@ -737,7 +737,7 @@ instructions: |
 id: 2025-07-17-018
 phase: M2
 title: "Enforce TLS and non-root containers"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:

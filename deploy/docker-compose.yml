@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  app:
+    build: ..
+    ports:
+      - "8443:8443"
+    user: "1000:1000"
+    volumes:
+      - ./certs:/certs:ro
+    environment:
+      - UVICORN_HOST=0.0.0.0
+      - UVICORN_PORT=8443
+    command: >-
+      uvicorn protocol_to_crf_generator.api.main:app --host $UVICORN_HOST --port $UVICORN_PORT \
+      --ssl-keyfile /certs/server.key --ssl-certfile /certs/server.crt
+
