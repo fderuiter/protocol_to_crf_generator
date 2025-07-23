@@ -918,7 +918,7 @@ instructions: |
 id: 2025-07-17-024
 phase: M2
 title: "Provision staging environment configuration"
-status: TODO
+status: DONE
 priority: P1
 owner: ai
 depends_on:
