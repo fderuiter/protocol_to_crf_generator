@@ -33,6 +33,40 @@ instructions: |
 <!-- task:end -->
 
 <!-- task:start -->
+id: 2025-07-19-026
+phase: M1
+title: "Document GitHub Models integration"
+status: DONE
+priority: P3
+owner: ai
+depends_on: []
+path:
+  - docs/github_models.md
+  - docs/prototyping_with_ai_models.md
+  - docs/evaluating_ai_models.md
+  - docs/storing_prompts.md
+  - docs/integrating_ai_models.md
+  - docs/spec/1_Vision & Scope/1_Project Charter + Vision Statement/project_charter.md
+  - docs/index.md
+  - mkdocs.yml
+tests: []
+acceptance:
+  - "New documentation file summarises GitHub Models"
+  - "Project charter scope updated"
+  - "mkdocs navigation links to the new page"
+  - "All unit and integration tests pass with coverage ≥90%."
+  - "Linting, formatting and security scans report no errors of severity \"Critical\" or higher."
+  - "Documentation updated for new or changed features."
+  - "CI pipeline completes successfully including Docker image build."
+  - "Peer review approvals obtained."
+context: |
+  GitHub Models will be used for prompt iteration and evaluation. Documentation must capture capabilities and enablement instructions.
+instructions: |
+  - Create `docs/github_models.md` summarising overview, capabilities, enabling, comparisons and playground usage.
+  - Link to this page from `index.md` and add bullet to mkdocs navigation.
+  - Update project charter in-scope section with a GitHub Models bullet.
+<!-- task:end -->
+<!-- task:start -->
 id: 2025-07-16-002
 phase: M0
 title: "Seed project documentation and policies"

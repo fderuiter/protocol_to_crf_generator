@@ -21,6 +21,7 @@ The **Protocol to CRF Generator** will let a single developer instantly conv
 * Command‑line interface and REST micro‑service
 * GitHub Actions CI with schema validation & unit tests
 * MIT‑licensed codebase and docs
+* Prompt iteration and model evaluation using **GitHub Models**
 
 ### Out‑of‑Scope
 
