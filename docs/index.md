@@ -8,3 +8,4 @@ You can now explore our [GitHub Models overview](github_models.md) to understand
 For step-by-step guidance on refining prompts, read [Optimizing your AI-powered app with Models](optimizing_with_models.md).
 To learn how to test and score model outputs, see [Evaluating AI models](evaluating_ai_models.md).
 For details on storing prompts, read [Storing prompts in GitHub repositories](storing_prompts.md).
+To integrate models into your workflow, see [Integrating AI models into your development workflow](integrating_ai_models.md).
