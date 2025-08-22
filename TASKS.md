@@ -1870,7 +1870,7 @@ instructions: |
 id: 2025-07-19-010
 phase: M4
 title: "Patch dependencies for CVE-2025-1234"
-status: TODO
+status: DONE
 priority: P0
 owner: ai
 depends_on:
