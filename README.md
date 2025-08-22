@@ -14,6 +14,7 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
 - Git
 - Docker (optional)
 - `pre-commit` installed globally or via `pip install pre-commit`
+- `pip-tools` installed globally or via `pip install pip-tools`
 
 ## 3‑Step Setup
 
@@ -37,6 +38,16 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
    Running `pre-commit install` enables automatic formatting, type and
    security checks before each commit.
 
+   > **Note on Managing Dependencies**
+   > This project uses `pip-tools` to manage dependencies. The direct dependencies are listed in `requirements.in`. The `requirements.txt` file is generated from this file and contains all the pinned dependencies.
+   > To add a new dependency, add it to `requirements.in` and then run:
+   >
+   > ```bash
+   > pip-compile requirements.in
+   > ```
+   >
+   > Then, run `pip install -r requirements.txt` to install the new dependency.
+
 3. Run the CLI
 
    ```bash
@@ -45,36 +56,25 @@ A toolchain that converts clinical study protocols into CDISC‑compliant Case R
 
 ## Running via Docker
 
-Build and start the API service:
+First, set up your local environment by creating a `.env` file in the `deploy` directory. You can copy the provided template:
 
 ```bash
-docker build -t protocol-to-crf .
-docker run -p 8443:8443 -v $(pwd)/deploy/certs:/certs:ro \
-  --user 1000:1000 protocol-to-crf \
-  uvicorn protocol_to_crf_generator.api.main:app \
-  --host 0.0.0.0 --port 8443 \
-  --ssl-keyfile /certs/server.key --ssl-certfile /certs/server.crt
+cp deploy/.env.example deploy/.env
 ```
 
-See [TLS Configuration](docs/ops/tls-setup.md) for generating the certificate bundle.
+Then, edit `deploy/.env` to configure the application.
 
-Alternatively use Docker Compose which starts auxiliary services:
+Next, build and start the API service using Docker Compose:
 
 ```bash
 docker compose -f deploy/docker-compose.yml up --build
 ```
 
-The API is then available at `https://localhost:8443`.
+The API will then be available at `https://localhost:8443`. See [TLS Configuration](docs/ops/tls-setup.md) for generating the required `server.key` and `server.crt` files in the `deploy/certs` directory.
 
 ## Configuration
 
-The rate limiter defaults to `5/minute` per IP address. Override this by setting
-the environment variable `RATE_LIMIT` before starting the API:
-
-```bash
-export RATE_LIMIT=10/minute
-docker compose -f deploy/docker-compose.yml up --build
-```
+Configuration is managed via environment variables in the `deploy/.env` file. This file is not checked into source control and is used for local development. See `deploy/.env.example` for a list of available variables.
 
 ## CLI ingest example
 
@@ -122,6 +122,12 @@ code review. Meeting notes and important discussions should be summarised in
 the relevant issue or PR to maintain a canonical record. See the [Communication
 Plan](docs/spec/6_Dev%20Env%20&%20Collaboration/4_Communication%20&%20Meeting%20Cadence%20Plan/communication-plan.md)
 for details.
+
+## Task Management
+
+This project's tasks are meticulously planned in `TASKS.md`. While this file provides a comprehensive overview, it is becoming large and difficult to manage.
+
+For improved long-term project management, we recommend migrating these tasks to a more scalable tool like [GitHub Issues](https://github.com/your-org/protocol-to-crf-generator/issues) or [GitHub Projects](https://github.com/your-org/protocol-to-crf-generator/projects). This would provide better search, filtering, and collaboration features.
 
 ## License
 
