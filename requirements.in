@@ -1,0 +1,18 @@
+# Development tools
+pre-commit
+ruff
+mypy
+pytest
+pytest-cov
+pytest-xdist
+pymarkdownlnt
+
+# Application dependencies
+pydantic
+python-docx
+spacy
+fastapi
+httpx==0.28.1
+locust
+slowapi
+jsonschema

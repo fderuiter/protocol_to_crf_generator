@@ -21,3 +21,14 @@ source = ["protocol_to_crf_generator"]
 [build-system]
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
+
+[project]
+name = "protocol_to_crf_generator"
+requires-python = ">=3.11"
+dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["protocol_to_crf_generator"]
+
+[tool.setuptools.dynamic]
+version = {attr = "protocol_to_crf_generator.__version__"}

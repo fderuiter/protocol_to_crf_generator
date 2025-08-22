@@ -7,9 +7,8 @@ services:
     user: "1000:1000"
     volumes:
       - ./certs:/certs:ro
-    environment:
-      - UVICORN_HOST=0.0.0.0
-      - UVICORN_PORT=8443
+    env_file:
+      - .env
     command: >-
       uvicorn protocol_to_crf_generator.api.main:app --host $UVICORN_HOST --port $UVICORN_PORT \
       --ssl-keyfile /certs/server.key --ssl-certfile /certs/server.crt
