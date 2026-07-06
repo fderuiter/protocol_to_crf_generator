@@ -19,5 +19,5 @@ addopts = "--cov=protocol_to_crf_generator"
 source = ["protocol_to_crf_generator"]
 
 [build-system]
-requires = ["setuptools>=64", "wheel"]
+requires = ["setuptools>=83.0.0", "wheel"]
 build-backend = "setuptools.build_meta"
